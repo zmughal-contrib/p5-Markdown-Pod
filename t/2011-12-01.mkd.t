@@ -98,7 +98,7 @@ L<CPAN의 Text::WrapI18N 모듈|https://metacpan.org/module/Text::WrapI18N>
     $ sudo cpan Text::ASCIITable Text::CharWidth
 
 사용자 계정으로 모듈을 설치하는 방법을 정확하게 알고 있거나
-C<perlbrew>를 이용해서 자신만의 Perl을 사용하고 있다면
+C<<< perlbrew >>>를 이용해서 자신만의 Perl을 사용하고 있다면
 다음 명령을 이용해서 모듈을 설치합니다.
 
     #!bash
@@ -254,7 +254,7 @@ L<![네모 반듯한 표][img-02]|2011-12-01-2.png>
 L<![세로 줄이 맞지 않는 표][img-03]|2011-12-01-3.png>
 
 아휴! 이름을 한글로 바꿨을 뿐인데, 표의 세로 줄이 깨져 버려서 엉망이 되었습니다.
-이것은 엄밀히 말해서 우리가 잘못했다기 보다는 C<Text::ASCIITable> 모듈의 저자가
+이것은 엄밀히 말해서 우리가 잘못했다기 보다는 C<<< Text::ASCIITable >>> 모듈의 저자가
 미처 고려하지 못한 부분입니다.
 간단하게 설명하면 UTF-8 인코딩을 사용하는 환경에서 한글 한 글자는 3바이트를 크기를
 가지는데 실제로 터미널의 화면에서는 2칸의 너비를 사용하기 때문에 생기는 문제입니다.
@@ -289,13 +289,13 @@ L<![세로 줄이 맞지 않는 표][img-03]|2011-12-01-3.png>
              email    => 'keedi.k@gmail.com',
              homepage => 'http://twitter.com/keedi',
 
-C<Text::ASCIITable> 모듈은 C<cb_count> 속성을 지원하는데 이 기능을 이용하면
+C<<< Text::ASCIITable >>> 모듈은 C<<< cb_count >>> 속성을 지원하는데 이 기능을 이용하면
 기본적으로 모듈이 사용하는 글자 계수기 대신 사용자가 원하는 콜백 함수를
 실행시켜 상황에 맞게 글자 수를 셀 수 있습니다.
-L<CPAN의 Text::CharWidth 모듈|https://metacpan.org/module/Text::CharWidth>은 C<mbswidth> 함수를
+L<CPAN의 Text::CharWidth 모듈|https://metacpan.org/module/Text::CharWidth>은 C<<< mbswidth >>> 함수를
 제공하는데 이 함수를 이용하면 CJK 문자가 터미널에서 갖는 실제 너비를
 알 수 있습니다.
-즉 C<cb_count> 속성에 할당할 콜백 함수에서 C<mbswidth> 함수를 사용해서
+즉 C<<< cb_count >>> 속성에 할당할 콜백 함수에서 C<<< mbswidth >>> 함수를 사용해서
 너비를 계산한 값을 반환한다면 정확히 우리가 원하는 결과가 나옵니다.
 
 패치를 적용하고 난 뒤 실행 결과는 다음과 같습니다.
@@ -370,17 +370,17 @@ Perl에 익숙하지 않다면 이번 패치는 조금 복잡하게 느껴질 �
 
 =item -
 
-C<Text::WrapI18N> 모듈의 C<_isCJ> 함수
+C<<< Text::WrapI18N >>> 모듈의 C<<< _isCJ >>> 함수
 
 
 =item -
 
-C<Text::ASCIITable> 모듈의 C<wrap> 함수
+C<<< Text::ASCIITable >>> 모듈의 C<<< wrap >>> 함수
 
 
 =back
 
-C<Text::ASCIITable> 모듈은 C<cb_count> 속성을 제공해서 사용자가 원하는
+C<<< Text::ASCIITable >>> 모듈은 C<<< cb_count >>> 속성을 제공해서 사용자가 원하는
 스타일로 글자의 개수를 셀 수는 있지만 줄바꿈과 관련해서는 공식적으로
 사용자가 제어할 수 있는 방법이 없습니다.
 그래서 해당 모듈을 사용하는 응용 프로그램 또는 라이브러리 측에서
@@ -393,7 +393,7 @@ CJK 문자에 대해서 바이트 단위가 아니라 실제 너비를 고려해
 줄바꿈을 수행하도록 도와줍니다.
 다만 이 모듈은 한국어를 고려하고 있지 않기 때문에
 한국어 유니코드에 해당하는 범위에 대해서도 동작하도록
-C<_isCJ> 함수를 오버라이딩 합니다.
+C<<< _isCJ >>> 함수를 오버라이딩 합니다.
 
 패치를 적용하고 난 후의 출력 화면입니다.
 

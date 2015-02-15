@@ -97,7 +97,7 @@ homebrew가 설치된 환경에서는 아래의 명령으로 진행합니다.
 
 =head2 언어지원 라이브러리 만들기
 
-Thrift가 준비가 되면 개별 언어용 라이브러리를 만들어야 합니다. 여기서는 Java 언어와 Perl 언어를 위한 라이브러리를 빌드해 보겠습니다. Thrift를 C<~/thrift-0.7.0>에 설치했다면 아래와 같이 Java 언어용 라이브러리 코드를 빌드합니다.
+Thrift가 준비가 되면 개별 언어용 라이브러리를 만들어야 합니다. 여기서는 Java 언어와 Perl 언어를 위한 라이브러리를 빌드해 보겠습니다. Thrift를 C<<< ~/thrift-0.7.0 >>>에 설치했다면 아래와 같이 Java 언어용 라이브러리 코드를 빌드합니다.
 
     #!bash
     $ cd ~/thrift-0.7.0/lib/java
@@ -114,7 +114,7 @@ Thrift가 준비가 되면 개별 언어용 라이브러리를 만들어야 합�
 
 =head2 튜토리얼 코드를 읽어봅시다
 
-먼저 Thrift가 제대로 동작하는지 튜토리얼 버전을 통해 확인해봅시다. C<~/thrift-0.7.0>에 Thrift를 설치했다면 C<~/thrift-0.7.0/tutorial>에 튜토리얼 코드가 있습니다.
+먼저 Thrift가 제대로 동작하는지 튜토리얼 버전을 통해 확인해봅시다. C<<< ~/thrift-0.7.0 >>>에 Thrift를 설치했다면 C<<< ~/thrift-0.7.0/tutorial >>>에 튜토리얼 코드가 있습니다.
 
     #!bash
     $ cd ~/thrift-0.7.0/tutorial
@@ -123,16 +123,16 @@ Thrift가 준비가 되면 개별 언어용 라이브러리를 만들어야 합�
     $ perl PerlServer.pl &
     $ perl PerlClient.pl 
 
-제대로 동작하면 C<fg> 명령어를 이용해서 서버로 이동한 다음 C<Control + C>(또는 C<Command + C>) 키를 눌러 빠져나옵니다.
+제대로 동작하면 C<<< fg >>> 명령어를 이용해서 서버로 이동한 다음 C<<< Control + C >>>(또는 C<<< Command + C >>>) 키를 눌러 빠져나옵니다.
 
-생소한 명령어들이 많기 때문에 낯설어 보일 것입니다. 하나씩 짚어보겠습니다. 두번째 줄의 C<thrift -r --gen perl tutorial.thrift>는 C<tutorial.thrift> 파일을 이용해 재귀적으로(C<-r>) 펄 언어용 코드를(C<--gen perl>) 생성하는 것을 의미합니다. Thrift에서 사용하는 언어는 C<.thrift> 확장자를 사용합니다. 지금의 경우 C<tutorial.thrift>가 여기에 해당합니다. C<thrift --gen>으로 코드를 생성할 때 Thrift 파일이 이동되고 서버용 뼈대 코드와 클라이언트용 라이브러리 코드가 만들어져 편리하게 이용할 수 있습니다. 노력을 줄여 클라이언트를 구현할 수 있고 서버측 코드도 뼈대 코드에 살을 붙이는 식으로 구현할 수 있습니다. C<--gen> 옵션에 다른 언어를 지정해 다른 언어를 위한 코드가 생성할 수 있습니다. C<--gen java>를 입력하면 자바용 코드가 만들어질 것입니다.
+생소한 명령어들이 많기 때문에 낯설어 보일 것입니다. 하나씩 짚어보겠습니다. 두번째 줄의 C<<< thrift -r --gen perl tutorial.thrift >>>는 C<<< tutorial.thrift >>> 파일을 이용해 재귀적으로(C<<< -r >>>) 펄 언어용 코드를(C<<< --gen perl >>>) 생성하는 것을 의미합니다. Thrift에서 사용하는 언어는 C<<< .thrift >>> 확장자를 사용합니다. 지금의 경우 C<<< tutorial.thrift >>>가 여기에 해당합니다. C<<< thrift --gen >>>으로 코드를 생성할 때 Thrift 파일이 이동되고 서버용 뼈대 코드와 클라이언트용 라이브러리 코드가 만들어져 편리하게 이용할 수 있습니다. 노력을 줄여 클라이언트를 구현할 수 있고 서버측 코드도 뼈대 코드에 살을 붙이는 식으로 구현할 수 있습니다. C<<< --gen >>> 옵션에 다른 언어를 지정해 다른 언어를 위한 코드가 생성할 수 있습니다. C<<< --gen java >>>를 입력하면 자바용 코드가 만들어질 것입니다.
 
-이제 C<tutorial.thrift> 파일을 살펴보겠습니다. 전체적으로 주석이 많이 달려있어 꼼꼼이 읽으면 대부분의 내용을 이해할 수 있을 것입니다.
+이제 C<<< tutorial.thrift >>> 파일을 살펴보겠습니다. 전체적으로 주석이 많이 달려있어 꼼꼼이 읽으면 대부분의 내용을 이해할 수 있을 것입니다.
 
     #!plain
     include "shared.thrift"
 
-C<shared.thrift> 파일을 포함하고 있습니다. 따라서 C<shared.thrift>를 먼저 보겠습니다.
+C<<< shared.thrift >>> 파일을 포함하고 있습니다. 따라서 C<<< shared.thrift >>>를 먼저 보겠습니다.
 
     #!plain
     namespace cpp shared
@@ -149,9 +149,9 @@ C<shared.thrift> 파일을 포함하고 있습니다. 따라서 C<shared.thrift>
       SharedStruct getStruct(1: i32 key)
     }
 
-첫 줄부터 네 번째 줄은 Thrift에서 생성할 언어 별 네임스페이스를 지정합니다. 여기서는 C<cpp>, C<java>, C<perl>, C<php> 언어에서 같은 네임스페이스로 서버 루틴을 사용합니다.
+첫 줄부터 네 번째 줄은 Thrift에서 생성할 언어 별 네임스페이스를 지정합니다. 여기서는 C<<< cpp >>>, C<<< java >>>, C<<< perl >>>, C<<< php >>> 언어에서 같은 네임스페이스로 서버 루틴을 사용합니다.
 
-C<struct SharedStruct>는 구조체를 만든 것입니다. 항목이 C<1:>, C<2:>와 같이 콜론이 뒤에 붙은 숫자와 함께 나열되어 점에 유의하세요. 그 뒤에 타입과 이름이 붙습니다. 자료형이 C<i32>와 C<string>인데 해당 자료형은 그 언어에 맞게 자동으로 변환됩니다. 아래는 사용할 수 있는 자료형입니다.
+C<<< struct SharedStruct >>>는 구조체를 만든 것입니다. 항목이 C<<< 1: >>>, C<<< 2: >>>와 같이 콜론이 뒤에 붙은 숫자와 함께 나열되어 점에 유의하세요. 그 뒤에 타입과 이름이 붙습니다. 자료형이 C<<< i32 >>>와 C<<< string >>>인데 해당 자료형은 그 언어에 맞게 자동으로 변환됩니다. 아래는 사용할 수 있는 자료형입니다.
 
 =over
 
@@ -209,19 +209,19 @@ set -     Set of unique elements of one type
 
 많은 언어에서 기본적으로 제공할만한 자료형이 제공되고 있습니다. 복잡한 자료형은 직렬화하거나 구조체를 만들어 사용해야 합니다.
 
-그 다음으로 C<service>가 위치하는데 C<service> 안에 우리가 사용할 수 있는 함수들이 위치합니다. C<service>는 객체 정도로 볼 수 있습니다. C<SharedStruct getStruct(1: i32 key)>를 보면 매개변수에도 C<1:>과 같이 순서대로 번호를 붙인 것을 볼 수 있습니다.
+그 다음으로 C<<< service >>>가 위치하는데 C<<< service >>> 안에 우리가 사용할 수 있는 함수들이 위치합니다. C<<< service >>>는 객체 정도로 볼 수 있습니다. C<<< SharedStruct getStruct(1: i32 key) >>>를 보면 매개변수에도 C<<< 1: >>>과 같이 순서대로 번호를 붙인 것을 볼 수 있습니다.
 
-다시 C<tutorial.thrift>로 돌아와 아직 모르는 부분들을 찾아봅시다.
+다시 C<<< tutorial.thrift >>>로 돌아와 아직 모르는 부분들을 찾아봅시다.
 
     #!plain
     php_namespace tutorial
 
-PHP의 경우 별도의 C<namespace>인 C<php_namespace>를 사용하는 것을 볼 수 있습니다. (구체적인 차이점은 모르겠습니다. php에 대해 잘 아시는 분이 설명해주셨으면 좋겠네요 :)
+PHP의 경우 별도의 C<<< namespace >>>인 C<<< php_namespace >>>를 사용하는 것을 볼 수 있습니다. (구체적인 차이점은 모르겠습니다. php에 대해 잘 아시는 분이 설명해주셨으면 좋겠네요 :)
 
     #!plain
     typedef i32 MyInteger
 
-C 언어에서 익숙하게 볼 수 있는 C<typedef> 구문입니다.
+C 언어에서 익숙하게 볼 수 있는 C<<< typedef >>> 구문입니다.
 
     #!plain
     const i32 INT32CONSTANT = 9853
@@ -250,12 +250,12 @@ C 언어에서 익숙하게 볼 수 있는 C<typedef> 구문입니다.
     #!plain
     i32 calculate(1:i32 logid, 2:Work w) throws (1:InvalidOperation ouch),
 
-뒤에 throws를 붙여서 예외를 던질 수 있게 되어 있습니다. 마지막에 C<,>가 붙어있는 점을 주의하세요. C<service> 내에 여러 함수들이 위치하고 C<,>로 구분됩니다. 펄에서와는 달리 마지막 항목인 경우에는 뒤에는 C<,>를 붙이지 않습니다.
+뒤에 throws를 붙여서 예외를 던질 수 있게 되어 있습니다. 마지막에 C<<< , >>>가 붙어있는 점을 주의하세요. C<<< service >>> 내에 여러 함수들이 위치하고 C<<< , >>>로 구분됩니다. 펄에서와는 달리 마지막 항목인 경우에는 뒤에는 C<<< , >>>를 붙이지 않습니다.
 
     #!plain
     oneway void zip(),
 
-C<oneway>는 호출을 수행하되 클라이언트가 응답을 기다리지 않겠다는 의미입니다. I/O가 많은 작업들에서 더 효과적인 처리를 기대할 수 있습니다.
+C<<< oneway >>>는 호출을 수행하되 클라이언트가 응답을 기다리지 않겠다는 의미입니다. I/O가 많은 작업들에서 더 효과적인 처리를 기대할 수 있습니다.
 
 이 명세를 한번 보는 것만으로는 이해하기 쉽지 않습니다. 다른 Thrift 명세들도 참고하는 것이 도움이 됩니다.
 
@@ -271,7 +271,7 @@ L<Hbase.thrift|http://svn.apache.org/viewvc/hbase/trunk/src/main/resources/org/a
 
 =head2 이제 서버측 펄 구현을 봅시다!
 
-아래와 같이 서버를 구축할 수 있습니다. C<PerlServer.pl>의 일부를 차용했습니다.
+아래와 같이 서버를 구축할 수 있습니다. C<<< PerlServer.pl >>>의 일부를 차용했습니다.
 
     #!perl
     use strict;
@@ -294,11 +294,11 @@ L<Hbase.thrift|http://svn.apache.org/viewvc/hbase/trunk/src/main/resources/org/a
         print "ping()\n";
     }
 
-위에 정의한 C<tutorial> 네임스페이스의 C<Calculator> 서비스를 구현한 것입니다. C<use base qw(tutorial::CalculatorIf);>로 시작하는 것이 보입니다.
+위에 정의한 C<<< tutorial >>> 네임스페이스의 C<<< Calculator >>> 서비스를 구현한 것입니다. C<<< use base qw(tutorial::CalculatorIf); >>>로 시작하는 것이 보입니다.
 
-뼈대 클래스가 C<If>가 붙은 형태로 되어 있습니다. 이런 관례는 Thrift가 언어 구현에 따라 다르게 만들어줍니다. 각 언어 구현에 따라 예제를 참고하면 쉽게 파악할 수 있습니다. 나머지 필요한 기능들은 C<sub new>, C<sub ping>과 같이 사용자 함수로 구현합니다.
+뼈대 클래스가 C<<< If >>>가 붙은 형태로 되어 있습니다. 이런 관례는 Thrift가 언어 구현에 따라 다르게 만들어줍니다. 각 언어 구현에 따라 예제를 참고하면 쉽게 파악할 수 있습니다. 나머지 필요한 기능들은 C<<< sub new >>>, C<<< sub ping >>>과 같이 사용자 함수로 구현합니다.
 
-C<service>의 함수의 작성이 끝나면 이 클래스를 확장하여 서버를 구현합니다.
+C<<< service >>>의 함수의 작성이 끝나면 이 클래스를 확장하여 서버를 구현합니다.
 
     #!perl
     eval {
@@ -321,9 +321,9 @@ C<service>의 함수의 작성이 끝나면 이 클래스를 확장하여 서버
         }
     }
 
-C<CalculatorHandler>는 방금 상속받아 구현한 클래스입니다. 여기에서 C<$processor>에 사용된 C<tutorialProcessor>는 Thrift가 생성한 코드입니다. C<Thrift::ServerSocket>과 C<Thrift::ForkingServer>는 이미 Thrift내에 포함된 클래스입니다.
+C<<< CalculatorHandler >>>는 방금 상속받아 구현한 클래스입니다. 여기에서 C<<< $processor >>>에 사용된 C<<< tutorialProcessor >>>는 Thrift가 생성한 코드입니다. C<<< Thrift::ServerSocket >>>과 C<<< Thrift::ForkingServer >>>는 이미 Thrift내에 포함된 클래스입니다.
 
-C<Thrift::ServerSocket>에 포트를 지정하는데 서버와 클라이언트 사이에 약속한 포트 번호를 입력합니다. 서버 내에 Thrift 구현이 여럿일 경우에는 여러 번호가 필요할 것입니다. 예를 들어 서버에서 C<Hbase>나 C<Casandra> 서버가 같이 돌고 있다면 이미 하나의 Thrift 포트를 사용하고 있을 것입니다. 이 때 다른 Thrift 서버는 새 포트 번호가 필요합니다.
+C<<< Thrift::ServerSocket >>>에 포트를 지정하는데 서버와 클라이언트 사이에 약속한 포트 번호를 입력합니다. 서버 내에 Thrift 구현이 여럿일 경우에는 여러 번호가 필요할 것입니다. 예를 들어 서버에서 C<<< Hbase >>>나 C<<< Casandra >>> 서버가 같이 돌고 있다면 이미 하나의 Thrift 포트를 사용하고 있을 것입니다. 이 때 다른 Thrift 서버는 새 포트 번호가 필요합니다.
 
 아래는 클라이언트 코드의 일부입니다.
 

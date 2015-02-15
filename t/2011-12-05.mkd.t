@@ -113,7 +113,7 @@ E-fetch를 이용해서 결과를 출력합니다.
 
 하지만 설명한 방식대로 키워드를 넣고 검색을 하면
 저자와 날짜, 제목만을 결과로 보여줍니다.
-L<NCBI 홈페이지|http://www.ncbi.nlm.nih.gov/>에서 C<rice>라는 키워드로 검색을 시도한 다음
+L<NCBI 홈페이지|http://www.ncbi.nlm.nih.gov/>에서 C<<< rice >>>라는 키워드로 검색을 시도한 다음
 Entrez 검색 결과에서 PubMed 카테고리를 선택했을 때
 결과 화면은 다음과 같습니다.
 
@@ -491,13 +491,13 @@ E-search에서 E-fetch를 거쳐서 나온 결과를 재구성하는
     ...
 
 제가 평소 흠모(?)해 마지않는 장철성 교수님(강원대학교 식물자원응용공학과)께서
-쓰신 논문의 정보를 탭문자를 구분자로 해서 C<result> 파일에 저장하려면
+쓰신 논문의 정보를 탭문자를 구분자로 해서 C<<< result >>> 파일에 저장하려면
 다음처럼 실행합니다.
 
     #!bash
     $ ./pubmed.pl -a 'Cheol Seong Jang' -tab > result
 
-두 명의 저자를 검색하고 싶다면 C<AND> 연산자를 사용합니다.
+두 명의 저자를 검색하고 싶다면 C<<< AND >>> 연산자를 사용합니다.
 
     #!bash
     $ ./pubmed.pl -a 'Cheol Seong Jang AND Andrew Paterson' -tab > result

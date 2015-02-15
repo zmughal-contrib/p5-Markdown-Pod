@@ -43,7 +43,7 @@ Perl 원라이너를 어떻게 쓸 수 있는지 살펴보겠습니다.
 소나 줘버려!>와 같은 마음가짐으로 내키는 대로 작성하면 됩니다.
 사실 이 문서의 코드들도 이런 마음가짐대로 I<마구> 작성한 것들입니다. ;-)
 또한 코드 안팎에서 쉘의 기능을 충실히 이용해야 한다는 점을 잊지 마세요.
-C<system>이라던가 역따옴표, C<while> 구문, 환경 변수 등 가리지 않도록 합니다.
+C<<< system >>>이라던가 역따옴표, C<<< while >>> 구문, 환경 변수 등 가리지 않도록 합니다.
 
 
 =head2 준비물
@@ -96,9 +96,9 @@ Octopress에서 I<훔쳐온> 테마를 기반으로 한 아주 간단한 블로�
 L<![Octopress 뺨치는 Perl 원라이너 블로그][img-01]|2011-12-02-1.png>
 
 Octropress는 GitHub 저장소를 블로그로 만들기 위해
-C<gh-pages>와 C<source> 두 개의 가지를 사용합니다.
-C<gh-pages> 가지에서는 HTML 파일을 발행하며,
-C<source> 가지는 실제 블로그 컨텐츠와 기타 여러 파일을 저장합니다.
+C<<< gh-pages >>>와 C<<< source >>> 두 개의 가지를 사용합니다.
+C<<< gh-pages >>> 가지에서는 HTML 파일을 발행하며,
+C<<< source >>> 가지는 실제 블로그 컨텐츠와 기타 여러 파일을 저장합니다.
 
 
 =head2 디렉토리 구조
@@ -121,8 +121,8 @@ C<source> 가지는 실제 블로그 컨텐츠와 기타 여러 파일을 저장
           |  `-- post.html      # 각 페이지를 위한 블로그 포스트 템플릿(default.html 에 include 됨)
           `-- favicon.png, stylesheets, javascripts
 
-C<.gitignore>를 보면  C<_scratch>, C<_deploy> 폴더는 C<source> 가지에 추가되지 않습니다.
-Octropress의 구현을 살펴보기 전 까지는 C<_deploy> 폴더처럼 발행을 위한 디렉토리를
+C<<< .gitignore >>>를 보면  C<<< _scratch >>>, C<<< _deploy >>> 폴더는 C<<< source >>> 가지에 추가되지 않습니다.
+Octropress의 구현을 살펴보기 전 까지는 C<<< _deploy >>> 폴더처럼 발행을 위한 디렉토리를
 어떻게 관리할지에 대해 많은 고민을 했었는데, 이 방법은 생각도 못했네요.
 단순히 소스용 가지와 발행용 가지 두 개를 만들어 다른 디렉토리로 관리하면 끝입니다.
 천재...
@@ -138,24 +138,24 @@ L<이미 만들어놓은 예제 블로그|https://github.com/pung96/blog>를 이
     cd blog
     ./init.sh
 
-C<init.sh> 파일의 내용은 다음과 같습니다.
+C<<< init.sh >>> 파일의 내용은 다음과 같습니다.
 
     #!bash
     git clone -b gh-pages git@git.github.com:<username>/blog.git _deploy
     mkdir -p _scratch
 
-C<_deploy> 디렉토리와 C<_scratch> 디렉토리를 만들어주는 간단한 스크립트입니다.
-C<<username>>은 당연히 바꾸어 주어야 겠지요?
+C<<< _deploy >>> 디렉토리와 C<<< _scratch >>> 디렉토리를 만들어주는 간단한 스크립트입니다.
+C<<< <username> >>>은 당연히 바꾸어 주어야 겠지요?
 
-C<build.sh> 파일은 작성한 마크다운 문서를 이용해 HTML 파일을 만들고
+C<<< build.sh >>> 파일은 작성한 마크다운 문서를 이용해 HTML 파일을 만들고
 다시 GitHub로 밀어넣는 Perl 원라이너의 집합입니다. 
-지금부터 C<build.sh> 파일을 분석해볼까요?
+지금부터 C<<< build.sh >>> 파일을 분석해볼까요?
 
 
 =head3 초기화
 
-먼저 C<_deploy>, C<_scratch> 디렉토리를 깨끗하게 비우고
-작업할 파일을 C<_scratch> 디렉토리로 복사합니다.
+먼저 C<<< _deploy >>>, C<<< _scratch >>> 디렉토리를 깨끗하게 비우고
+작업할 파일을 C<<< _scratch >>> 디렉토리로 복사합니다.
 
     #!bash
     rm -rf _deploy/* _scratch/*
@@ -195,8 +195,8 @@ C<build.sh> 파일은 작성한 마크다운 문서를 이용해 HTML 파일을 
 =head3 메타 정보 가공하기
 
 우선 날짜에 따라 정렬해보겠습니다.
-C<DumpFile>처럼 C<LoadFile("posts.yml")>을 사용할 수도 있지만
-앞에서 무심코 C<-0>을 적어버렸기 때문에 그냥 파일을 읽어들여서
+C<<< DumpFile >>>처럼 C<<< LoadFile("posts.yml") >>>을 사용할 수도 있지만
+앞에서 무심코 C<<< -0 >>>을 적어버렸기 때문에 그냥 파일을 읽어들여서
 Load에 파일 내용을 통째로 넣었습니다.
 
 L<CPAN의 DateTimeX::Easy 모듈|https://metacpan.org/module/DateTimeX::Easy>을 사용해
@@ -206,45 +206,45 @@ L<CPAN의 DateTimeX::Easy 모듈|https://metacpan.org/module/DateTimeX::Easy>을
     #!bash
     perl -0 -MYAML=Load,Dump -ne'print Dump(sort{$b->{date}cmp$a->{date}}Load($_))' _scratch/posts.yml > _scratch/posts2.yml
 
-순서에 따른 아이다와 포스트의 URL(예: C</blog/blog/2011/11/30/4th-post>)을 YAML DB에 추가합니다.
-C</blog/blog> 이렇게 중복이 생겼네요. 그냥 넘어갑시다.
+순서에 따른 아이다와 포스트의 URL(예: C<<< /blog/blog/2011/11/30/4th-post >>>)을 YAML DB에 추가합니다.
+C<<< /blog/blog >>> 이렇게 중복이 생겼네요. 그냥 넘어갑시다.
 
     #!bash
     perl -0 -MYAML=Load,Dump -ne'print Dump(map {$_->{file}=~/(\d+)-(\d+)-(\d+)-(.*?)\./;$_->{url}="blog/$1/$2/$3/$4";$_->{iid}=$id++;$_}Load($_))' _scratch/posts2.yml > _scratch/posts.yml
 
 잘 추출되어 정렬되었는지, 필요한 정보가 추가되고 있는지
 L<CPAN의 Data::Dumper 모듈|https://metacpan.org/module/Data::Dumper>을 이용해 확인해봅시다.
-C<Data::Dumper> 모듈은 원라이너 코딩시 가장 많이 사용하는 모듈 중의 하나입니다.
+C<<< Data::Dumper >>> 모듈은 원라이너 코딩시 가장 많이 사용하는 모듈 중의 하나입니다.
 
     #!bash
     perl -0 -MYAML=Load -MData::Dumper -ne'print Dumper Load($_);' posts.yml
 
 두개의 YAML 파일을 관리하는 것은 귀찮으니 앞으로 쓰일 YAML 파일들을 하나로 통합해 버립니다.
-C<cat>으로 합치면 간단하게 끝납니다.
+C<<< cat >>>으로 합치면 간단하게 끝납니다.
 
     #!bash
     cat _config.yml _scratch/posts.yml > _scratch/all.yml
 
 이번에는 마크다운으로 저장한 페이지를 HTML로 바꿉니다.
-C<Text::Markdown> 모듈이 알아서 다 해 줍니다.
-C<-i> 옵션을 사용해서 한방에 파일들을 변환해 버렸습니다.
-사실 C<-i> 는 굉장히 위험한 옵션입니다.
-사용하기 전에 파일을 백업하거나 C<-i.bak> 같은 방법을 쓰는 등 각별한 관리가 필요합니다.
+C<<< Text::Markdown >>> 모듈이 알아서 다 해 줍니다.
+C<<< -i >>> 옵션을 사용해서 한방에 파일들을 변환해 버렸습니다.
+사실 C<<< -i >>> 는 굉장히 위험한 옵션입니다.
+사용하기 전에 파일을 백업하거나 C<<< -i.bak >>> 같은 방법을 쓰는 등 각별한 관리가 필요합니다.
 저 역시 숱하게 파일을 날려버리고 여러번 울었었죠!
-특히 C<-p> 옵션 대신 무심코 C<-n> 옵션을 쓴다면 깨끗해진 파일들을 보게 됩니다.
+특히 C<<< -p >>> 옵션 대신 무심코 C<<< -n >>> 옵션을 쓴다면 깨끗해진 파일들을 보게 됩니다.
 이런!;;;
 
     #!bash
     perl -i -0 -mText::Markdown=markdown -ne'print markdown($_)' _scratch/*.markdown
 
-C<Text::Xslate> 모듈을 이용해 미리 작성한 템플릿에 만들어진 HTML 파일을
+C<<< Text::Xslate >>> 모듈을 이용해 미리 작성한 템플릿에 만들어진 HTML 파일을
 집어넣어서 실제 보여줄 페이지를 만듭니다.
 제목이나 앞뒤 페이지 네비게이션을 위해서 메타정보도 함께 전달해야 합니다.
 
     #!bash
     perl -mYAML=LoadFile -MText::Xslate -e'($s,@p)=LoadFile("_scratch/all.yml");map{open$f,">$_->{file}";print$f Text::Xslate->new->render("source/_layouts/default.html",  { site=>$s,  page=>$_, type=>"post.html", posts=>\@p})}@p'
 
-최종 작성된 파일들을 C<_deploy> 폴더의 C<blog/년도/월/날짜/제목/index.html> 형식으로 보내줍니다.
+최종 작성된 파일들을 C<<< _deploy >>> 폴더의 C<<< blog/년도/월/날짜/제목/index.html >>> 형식으로 보내줍니다.
 
     #!bash
     ls _scratch/*.html | perl -nle'/(\d+)-(\d+)-(\d+)-(.*?)\./;$d="_deploy/blog/$1/$2/$3/$4";system("mkdir -p $d && cp $_ $d/index.html");'
@@ -252,20 +252,20 @@ C<Text::Xslate> 모듈을 이용해 미리 작성한 템플릿에 만들어진 H
 이제 메인 페이지를 만들겠습니다.
 첫 페이지에 보여줄 포스트의 개수를 정하고 페이지 네비게이션을 만들면 좋겠지만,
 I<귀찮아서> 그냥 모든 포스트를 한 화면에 넣었습니다.
-똑같은 템플릿을 사용하면서 템플릿 내에서 C<for> 반복문을 이용해 모든 포스트를 출력합니다.
+똑같은 템플릿을 사용하면서 템플릿 내에서 C<<< for >>> 반복문을 이용해 모든 포스트를 출력합니다.
 
     #!bash
     perl -mYAML=LoadFile -MText::Xslate -e'($s,@p)=LoadFile("_scratch/all.yml");open$f,">_deploy/index.html";print$f Text::Xslate->new->render("source/_layouts/default.html",  { site=>$s,  pages=>\@p,  type=>"index.html", posts=>\@p})'
 
 와우! 이제 다 끝났습니다.
 Octopress 에서 I<훔쳐온> 정체를 알 수 없는
-각종 CSS와 자바스크립트 파일들을 C<_deploy> 폴더로 복사합시다.
+각종 CSS와 자바스크립트 파일들을 C<<< _deploy >>> 폴더로 복사합시다.
 
     #!bash
     rsync -a source/favicon.png source/images source/javascripts source/stylesheets _deploy/
 
-C<_deploy> 폴더로 이동해 추가, 변경, 삭제된 파일들을 업데이트 한 후
-원격 저장소의 C<gh-pages> 브랜치로 밀어 넣습니다.
+C<<< _deploy >>> 폴더로 이동해 추가, 변경, 삭제된 파일들을 업데이트 한 후
+원격 저장소의 C<<< gh-pages >>> 브랜치로 밀어 넣습니다.
 
     #!bash
     cd _deploy
@@ -277,14 +277,14 @@ C<_deploy> 폴더로 이동해 추가, 변경, 삭제된 파일들을 업데이�
 
 =head2 놀랍게도 끝
 
-C<source> 가지를 C<push>하는 것 있지 마세요!
+C<<< source >>> 가지를 C<<< push >>>하는 것 있지 마세요!
 
     #!bash
     git add .
     git commit -a -m <log>
     git push origin source
 
-이제 C<https://<username>.github.com/blog> 주소의 여러분 만의 블로그가 생성되었습니다.
+이제 C<<< https://<username>.github.com/blog >>> 주소의 여러분 만의 블로그가 생성되었습니다.
 
 I<참 쉽죠잉~> ;-)
 
@@ -297,7 +297,7 @@ I<참 쉽죠잉~> ;-)
 
 =head2 Perl 코드 내에 쉘 환경 변수를 넣기
 
-환경 변수를 넣으려면 C<$ENV{VarName}> 해시 변수를 사용할 수도 있지만,
+환경 변수를 넣으려면 C<<< $ENV{VarName} >>> 해시 변수를 사용할 수도 있지만,
 쉘의 문자열 병합 기능을 이용할 수도 있습니다.
 
     #!bash
@@ -307,7 +307,7 @@ I<참 쉽죠잉~> ;-)
 =head2 여러 개의 파일 열기
 
 속도에 아주 민감한 코드가 아니라면, 여러 파일을 처리할 때 원라이너 Perl 코드 내에서
-파일을 여는 대신 쉘의 C<while> 루프를 사용할 수도 있습니다.
+파일을 여는 대신 쉘의 C<<< while >>> 루프를 사용할 수도 있습니다.
 
     #!bash
     ls *.root | while read x;do perl -nle'do something' $x > $x.new ;done
@@ -328,7 +328,7 @@ Perl 원라이너는 정말 강력합니다.
 이 문서에서는 마크다운 문서만 다루었지만 POD 등의 다른 형식을 추가하는 것도 어렵지 않겠죠.
 이미 모든 것은 L<CPAN님|http://www.cpan.org/>께서 알고 계십니다.
 비슷한 방식으로 L<ikiwiki|http://ikiwiki.info>를 GitHub에서 서비스 하는 것도 간단하고 재밌겠네요.
-C<_deploy> 디렉토리는 단순한 정적 파일들만을 가지고 있기 때문에 GitHub로 밀어넣는 것 뿐만 아니라,
+C<<< _deploy >>> 디렉토리는 단순한 정적 파일들만을 가지고 있기 때문에 GitHub로 밀어넣는 것 뿐만 아니라,
 다른 웹서버나 L<dotcloud|http://dotcloud.com>, L<Amazon S3|http://aws.amazon.com/s3> 같은 클라우드 서비스를 이용할 수도 있겠죠.
 숙제로 남겨두기로 할까요?
 

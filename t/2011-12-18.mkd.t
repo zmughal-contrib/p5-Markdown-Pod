@@ -248,17 +248,17 @@ L<라이브러리|http://www.arduino.cc/playground/Main/WiiChuckClass>를 이용
 
 =item -
 
-C<Wire.send(0xF0)>처럼 되어 있는 부분을 C<Wire.write(byte(0xF0))>로 변경합니다.
+C<<< Wire.send(0xF0) >>>처럼 되어 있는 부분을 C<<< Wire.write(byte(0xF0)) >>>로 변경합니다.
 
 
 =item -
 
-C<Wire.receive()>를 C<Wire.read()>로 변경합니다.
+C<<< Wire.receive() >>>를 C<<< Wire.read() >>>로 변경합니다.
 
 
 =back
 
-수정한 C<WiiChuckClass>를 이용해 Perl 측에 보내줄 소스는 다음과 같습니다.
+수정한 C<<< WiiChuckClass >>>를 이용해 Perl 측에 보내줄 소스는 다음과 같습니다.
 
     #!cpp
     #include <math.h>
@@ -310,7 +310,7 @@ C<Wire.receive()>를 C<Wire.read()>로 변경합니다.
     }
 
 이렇게 Nunchuck의 조작 값을 받아 어디에 이용할까요? 오늘은 Wii Nunchuck을 마우스로 사용해봅시다.
-이를 위해 L<Win32::GuiTest|http://metacpan.org/module/Win32::GuiTest>의 마우스 조작 기능인 C<SendMouse>를 이용해 보도록하겠습니다.
+이를 위해 L<Win32::GuiTest|http://metacpan.org/module/Win32::GuiTest>의 마우스 조작 기능인 C<<< SendMouse >>>를 이용해 보도록하겠습니다.
 
     #!perl
     use strict;

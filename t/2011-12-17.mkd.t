@@ -37,7 +37,7 @@ I<갑이나 경영진의 변덕스러운 요구사항에 따라> 바뀌기 마�
 
 =head2 스키마 클래스 생성
 
-여느 Catalyst 튜토리얼의 첫단락이 일단 C<Hello World>를 찍는 것이라면,
+여느 Catalyst 튜토리얼의 첫단락이 일단 C<<< Hello World >>>를 찍는 것이라면,
 아마 그 다음이나 다음다음 작업은 모델을 생성하는 것입니다.
 대충 아래와 같은 커맨드에 길고 긴 옵션을 주면 스키마 클래스를 만들 수 있습니다.
 
@@ -45,7 +45,7 @@ I<갑이나 경영진의 변덕스러운 요구사항에 따라> 바뀌기 마�
     $ ./script/myapp_web_create.pl model MyDB DBIC::Schema MyApp::Schema \
       create=static [options] dbi:mysql:test_db test_user test_password
 
-이렇게 해서 C<test_db>라는 데이터베이스에 속한 테이블이 각각의 결과클래스가 생성됩니다.
+이렇게 해서 C<<< test_db >>>라는 데이터베이스에 속한 테이블이 각각의 결과클래스가 생성됩니다.
 그 중 하나의 예를 들면 다음과 같습니다.
 
     #!perl
@@ -106,7 +106,7 @@ I<갑이나 경영진의 변덕스러운 요구사항에 따라> 바뀌기 마�
     #!perl
     # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8E8XDlgZJWsPmqTw/xP34A
 
-여기의 C<md5sum:8E8XDlgZJWsPmqTw/xP34A>는 해당 결과 클래스의 코드를
+여기의 C<<< md5sum:8E8XDlgZJWsPmqTw/xP34A >>>는 해당 결과 클래스의 코드를
 MD5 체크섬 값으로서 코드의 변경 유무를 검사하고 있습니다.
 어떤 코드를 추가하거나 테이블 관계 설정을 추가로 해야 할 때는
 I<반드시 이 문구 아래에서부터 코드를 적어나가도록> 합니다.
@@ -175,24 +175,24 @@ I<반드시 이 문구 아래에서부터 코드를 적어나가도록> 합니�
     ....
 
 그래서 일단 I<그 문구> 위에 쓰지 말라고 했으니까, 밑에 추가하고 싶은
-컴포넌트(TimeStamp)를 넣고, C<created_on> 컬럼에 해당 컴포넌트의 동작을 발생시키는 
-속성 값 C<set_on_create>를 추가합니다.
-이렇게 추가한 코드는 SQL C<INSERT>문에 해당하는 액션이 발생했을 때 자동으로
-C<created_on> 값을 지정해주도록 합니다.
+컴포넌트(TimeStamp)를 넣고, C<<< created_on >>> 컬럼에 해당 컴포넌트의 동작을 발생시키는 
+속성 값 C<<< set_on_create >>>를 추가합니다.
+이렇게 추가한 코드는 SQL C<<< INSERT >>>문에 해당하는 액션이 발생했을 때 자동으로
+C<<< created_on >>> 값을 지정해주도록 합니다.
 위에서 아무리 I<그 문구> 위에 쓰지말라고 했어도 중복되는 코드를 매번 이렇게 
-적어야 된다니... 맙소사! 거기에 C<created_on> 같은 경우에는 거의 대부분의 테이블에
+적어야 된다니... 맙소사! 거기에 C<<< created_on >>> 같은 경우에는 거의 대부분의 테이블에
 다 들어가 있다고 생각한다면... 아아.. 끔찍합니다.
 
 
 =head2 이건 더더욱 아니잖아
 
-C<Access> 이외에 C<Deny>, C<User>, C<Group> 등의 많은 결과클래스가 있다고 합시다.
+C<<< Access >>> 이외에 C<<< Deny >>>, C<<< User >>>, C<<< Group >>> 등의 많은 결과클래스가 있다고 합시다.
 그리고 이 결과클래스들에 토씨하나 안틀리고 똑같은 메소드가 정의된다고 생각해봅니다.
 정말로 피가 DRY합니다.
-이 경우에는 대개의 결과 클래스가 상속하고 있는 C<DBIx::Class::Core>를 손을 봐야
-되겠죠. 그럼 C<ResultBase>라는 클래스를 만들고 이것이 C<DBIx::Class::Core>를 상속하도록 하고,
-그 외 여타 결과클래스들이 C<ResultBase>를 상속받도록 합니다.
-C<ResultBase>의 경우는 아래와 같습니다.
+이 경우에는 대개의 결과 클래스가 상속하고 있는 C<<< DBIx::Class::Core >>>를 손을 봐야
+되겠죠. 그럼 C<<< ResultBase >>>라는 클래스를 만들고 이것이 C<<< DBIx::Class::Core >>>를 상속하도록 하고,
+그 외 여타 결과클래스들이 C<<< ResultBase >>>를 상속받도록 합니다.
+C<<< ResultBase >>>의 경우는 아래와 같습니다.
 
     #!perl
     package MyApp::Schema::ResultBase;
@@ -207,7 +207,7 @@ C<ResultBase>의 경우는 아래와 같습니다.
     
     1;
 
-그리고 결과 클래스에서 이 C<ResultBase>를 상속합니다.
+그리고 결과 클래스에서 이 C<<< ResultBase >>>를 상속합니다.
 
     #!perl
     package MyApp::Schema::Result::Access;
@@ -221,7 +221,7 @@ C<ResultBase>의 경우는 아래와 같습니다.
     #!perl
     # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:8E8XDlgZJWsPmqTw/xP34A
 
-맙소사! C<ResultBase>를 상속하는 것조차도 이 문구위에 놓이게 되니 맘편히 고칠수도 없네요!
+맙소사! C<<< ResultBase >>>를 상속하는 것조차도 이 문구위에 놓이게 되니 맘편히 고칠수도 없네요!
 
 
 =head2 스키마 클래스 덤프에 설정파일을 사용
@@ -230,7 +230,7 @@ C<ResultBase>의 경우는 아래와 같습니다.
 데이터베이스 구성이 바뀌어질 때마다 그 긴 커맨드를
 일일이 붙여넣기 식으로 넣어야하니, 좋은 방법 같지는 않습니다.
 우선 I<기존 명령>의 사용을 그만두도록 합니다.
-컴포넌트 등록이나, C<ResultBase> 클래스 설정이나 컬럼의 속성 추가 등등
+컴포넌트 등록이나, C<<< ResultBase >>> 클래스 설정이나 컬럼의 속성 추가 등등
 매번 스키마 클래스 덤프할 때마다 자신의 상황에 맞게
 이것저것 개조(customize)할 필요가 있습니다.
 
@@ -239,12 +239,12 @@ L<Catalyst::Helper::Model::DBIC::Schema|http://search.cpan.org/perldoc?Catalyst:
 그래서 위 모듈 안에서 본질적으로 스키마 클래스 덤프에 사용되는 모듈인
 L<DBIx::Class::Schema::Loader|http://search.cpan.org/perldoc?DBIx::Class::Schema::Loader>를 사용합니다.
 L<DBIx::Class::Schema::Loader|http://search.cpan.org/perldoc?DBIx::Class::Schema::Loader>가 설치되어 있으면
-C<dbicdump>라는 명령이 존재할 것입니다.
-이 C<dbicdump> 커맨드에 이제부터 이 상황을 타개할 설정 파일을 담겠습니다.
+C<<< dbicdump >>>라는 명령이 존재할 것입니다.
+이 C<<< dbicdump >>> 커맨드에 이제부터 이 상황을 타개할 설정 파일을 담겠습니다.
 설정 파일은 L<Config::Any|http://search.cpan.org/perldoc?Config::Any> 모듈로 처리되므로
 펄에서 쓰이는 어떤 형식이라도 다룰 수 있습니다.
 심지어는 I<펄 코드> 자신도 설정으로 사용할 수 있습니다.
-아래는 C<dbicdump> 설정 파일의  예제입니다.
+아래는 C<<< dbicdump >>> 설정 파일의  예제입니다.
 
     #!perl
     {
@@ -280,13 +280,13 @@ C<dbicdump>라는 명령이 존재할 것입니다.
     }
 
 항목들이 많으므로 전부 설명하는 대신, 위에서 봉착했던 문제에 대해 추려볼까요?
-우선 C<ResultBase> 클래스 문제입니다. C<result_base_class> 값을 지정해 줌으로써
-모든 결과클래스들은 C<DBIx::Class::Core>가 아니라 C<MyApp::Schema::ResultBase>를
-상속받게 됩니다. 물론 C<MyApp::Schema::ResultBase>는 스스로 정의해줘야 합니다.
+우선 C<<< ResultBase >>> 클래스 문제입니다. C<<< result_base_class >>> 값을 지정해 줌으로써
+모든 결과클래스들은 C<<< DBIx::Class::Core >>>가 아니라 C<<< MyApp::Schema::ResultBase >>>를
+상속받게 됩니다. 물론 C<<< MyApp::Schema::ResultBase >>>는 스스로 정의해줘야 합니다.
 다음은 컬럼의 컴포넌트를 이용한 확장 문제입니다.
 MD5 체크섬 값 아래에 중복되는 코드를 매번 적어주어야 했습니다.
-이렇게 사용할 컴포넌트들을 결과클래스 별로 지정하는 대신 C<ResultBase> 클래스를 읽어들입니다.
-사실 이처럼 C<ResultBase>를 놓고 여기에 컴포넌트를 일괄해서 읽어들이는 방식은
+이렇게 사용할 컴포넌트들을 결과클래스 별로 지정하는 대신 C<<< ResultBase >>> 클래스를 읽어들입니다.
+사실 이처럼 C<<< ResultBase >>>를 놓고 여기에 컴포넌트를 일괄해서 읽어들이는 방식은
 Cookbook 문서에서도 L<스타트업 속도 향상을 위해 권장|http://search.cpan.org/~arodland/DBIx-Class-0.08196/lib/DBIx/Class/Manual/Cookbook.pod#STARTUP_SPEED>하고 있습니다.
 
     #!perl
@@ -307,14 +307,14 @@ Cookbook 문서에서도 L<스타트업 속도 향상을 위해 권장|http://se
     1;
 
 그리고 컴포넌트의 사용을 위한 컬럼의 속성은
-C<custom_column_info> 속성에 코드를 등록해 지정할 수 있습니다.
-위의 코드처럼 등록하면 C<created_on>에 C<TimeStamp> 컴포넌트를 사용하기 위한
-속성 값인 C<set_on_create>이 모든 결과클래스에 추가됩니다.
+C<<< custom_column_info >>> 속성에 코드를 등록해 지정할 수 있습니다.
+위의 코드처럼 등록하면 C<<< created_on >>>에 C<<< TimeStamp >>> 컴포넌트를 사용하기 위한
+속성 값인 C<<< set_on_create >>>이 모든 결과클래스에 추가됩니다.
 
 
 =head2 설정파일을 이용한 스키마 덤프
 
-앞에서 정의한 설정파일을 C<schema-loader-config.pl>이라는 파일로 지정하고
+앞에서 정의한 설정파일을 C<<< schema-loader-config.pl >>>이라는 파일로 지정하고
 다음 명령을 실행하면 좀 더 유연하게 스키마 클래스를 덤프할 수 있습니다.
 
     #!bash
@@ -337,7 +337,7 @@ L<DBIx::Class::Schema::Loader|http://search.cpan.org/perldoc?DBIx::Class::Schema
 
 =item -
 
-C<ResultBase> 같은 기본 클래스를 두고 결과클래스 내의 공용 메소드, 컴포넌트들을 일괄로 정의하고 관리하도록 합니다.
+C<<< ResultBase >>> 같은 기본 클래스를 두고 결과클래스 내의 공용 메소드, 컴포넌트들을 일괄로 정의하고 관리하도록 합니다.
 
 
 =item -
@@ -347,7 +347,7 @@ C<ResultBase> 같은 기본 클래스를 두고 결과클래스 내의 공용 �
 
 =item -
 
-C<DBIx::Class>는 나쁘지 않습니다.
+C<<< DBIx::Class >>>는 나쁘지 않습니다.
 
 
 =item -

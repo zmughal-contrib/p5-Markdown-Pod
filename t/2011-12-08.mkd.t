@@ -74,7 +74,7 @@ L<CPAN의 Catalyst 모듈|https://metacpan.org/module/Catalyst>
     $ sudo cpan OpenDocument::Template Catalyst
 
 사용자 계정으로 모듈을 설치하는 방법을 정확하게 알고 있거나
-C<perlbrew>를 이용해서 자신만의 Perl을 사용하고 있다면
+C<<< perlbrew >>>를 이용해서 자신만의 Perl을 사용하고 있다면
 다음 명령을 이용해서 모듈을 설치합니다.
 
     #!bash
@@ -139,12 +139,12 @@ L<MS Office 2010/2007 SP2|http://office.microsoft.com/ko-kr/>
 그럼 ODT는 어떻게 구성되어 있을까요?
 오픈도큐먼트포맷(ODF)은 일반적으로 여러 개의 XML 문서와 이진 파일을
 하나의 ZIP 컨테이너 안에 묶는 형태입니다.
-확장자는 C<.odt> 형식을 따르지만 실제로는 ZIP 압축 파일인 것이죠.
+확장자는 C<<< .odt >>> 형식을 따르지만 실제로는 ZIP 압축 파일인 것이죠.
 
 ODT 뿐만 아니라 일반적인 오픈도큐먼트포맷(ODF)의 파일 구성을 살펴봅시다.
 오픈오피스(또는 ODF 쓰기를 지원하는 프로그램)를 열어
-아무 글이나 작성한 후 C<sample.odt> 파일로 저장합니다.
-이제 C<unzip> 유틸리티를 써서 압축을 풀고 디렉터리 구조가 어떤지 살펴보죠.
+아무 글이나 작성한 후 C<<< sample.odt >>> 파일로 저장합니다.
+이제 C<<< unzip >>> 유틸리티를 써서 압축을 풀고 디렉터리 구조가 어떤지 살펴보죠.
 
     #!bash
     $ unzip sample.odt
@@ -168,13 +168,13 @@ ODT 뿐만 아니라 일반적인 오픈도큐먼트포맷(ODF)의 파일 구성
 
 무언가 굉장히 많은 파일들이 생겼지만, 우리가 하려는 작업인
 문서의 내용을 조작하고 생성하는 관점에서 다가간다면
-핵심은 C<content.xml>, C<meta.xml>, C<styles.xml> 세 개의 파일입니다.
-C<content.xml> 파일은 문서를 통해 보여지는 대부분의 내용을 담고있습니다.
+핵심은 C<<< content.xml >>>, C<<< meta.xml >>>, C<<< styles.xml >>> 세 개의 파일입니다.
+C<<< content.xml >>> 파일은 문서를 통해 보여지는 대부분의 내용을 담고있습니다.
 일반적으로 텍스트, 표, 프레젠테이션 등의 구조와 내용입니다.
-C<meta.xml> 파일은 문서의 MIME 타입을 기술합니다.
+C<<< meta.xml >>> 파일은 문서의 MIME 타입을 기술합니다.
 생성 시간, 최종 수정 시간, 문서 수정 시 걸린 전체 시간,
 낱말/쪽/표/그림 개수 같은 문서 정보에 해당하는 항목들이 담겨있습니다.
-C<styles.xml> 파일은 XML 형식으로 된 CSS라고 보면 됩니다.
+C<<< styles.xml >>> 파일은 XML 형식으로 된 CSS라고 보면 됩니다.
 글꼴(font), 인치 당 문자 수(pitch), 장식(decoration), 여백(spacing),
 탭 위치(tab stop) 등 문서 편집시 이용할 수 있는 다양한 스타일이 정의되어 있습니다.
 
@@ -190,13 +190,13 @@ C<styles.xml> 파일은 XML 형식으로 된 CSS라고 보면 됩니다.
 트위터나 페이스북 친구에게 크리스마스 카드를 돌리는 것은 일도 아니겠죠.
 만들어 봅시다.
 
-우선 오픈오피스를 열어 C<xmas-card.odt>를 만듭니다.
+우선 오픈오피스를 열어 C<<< xmas-card.odt >>>를 만듭니다.
 여기서 만든다는 것은 I<꾸미고 싶은 만큼 잔뜩 꾸미는 것>을 말합니다.
 다음으로 자료가 변경해서 들어갈 부분을 표시합니다.
 예를 들어, 크리스마스 카드의 경우 받는 사람의 이름이나 날짜는 계속 바뀌겠죠.
 네, 그것이 핵심입니다!
 문서를 계속 I<우려서> 자동 생성하되, 필요한 부분의 데이터만 받아서 이용하자구요!
-그렇다면 가변 데이터에 해당하는 부분을 C<xxxx>라고 표시합니다.
+그렇다면 가변 데이터에 해당하는 부분을 C<<< xxxx >>>라고 표시합니다.
 
 =for html <img src="2011-12-08-1.png" alt="xxxx 표시" width="700" />
 <br  />
@@ -204,18 +204,18 @@ C<styles.xml> 파일은 XML 형식으로 된 CSS라고 보면 됩니다.
 I<그림 1.> xxxx 표시 L<(원본)|2011-12-08-1.png>
 
 사실 여기까지(틀을 만드는 것) 진행했으면 벌써 절반 이상 된 것입니다.
-이젠 C<unzip> 유틸리티를 사용해 C<xmas-card.odt> 파일의 압축을 풉니다.
-압축을 푼 다음 C<content.xml>과 C<style.xml>만 남겨두고 나머지는 모두 지웁니다.
+이젠 C<<< unzip >>> 유틸리티를 사용해 C<<< xmas-card.odt >>> 파일의 압축을 풉니다.
+압축을 푼 다음 C<<< content.xml >>>과 C<<< style.xml >>>만 남겨두고 나머지는 모두 지웁니다.
 
-이제 C<content.xml>을 열어 C<xxxx>를 찾아봅니다.
-C<xxxx>로 표시한 것은 가변 데이터의 위치를 쉽게 찾기 위해서 입니다.
-수 많은 문자열 중 절대 겹치지 않을 것 같은 C<xxxx>로
+이제 C<<< content.xml >>>을 열어 C<<< xxxx >>>를 찾아봅니다.
+C<<< xxxx >>>로 표시한 것은 가변 데이터의 위치를 쉽게 찾기 위해서 입니다.
+수 많은 문자열 중 절대 겹치지 않을 것 같은 C<<< xxxx >>>로
 표시했기 때문에 편집기의 찾기 기능을 잘 이용하면 손쉽게 편집할 수 있습니다.
-그리고 C<xxxx>를 찾아서 사용할 변수로 바꿔줍시다.
+그리고 C<<< xxxx >>>를 찾아서 사용할 변수로 바꿔줍시다.
 이 때 변경할 변수라 함은 L<CPAN의 Template 모듈|https://metacpan.org/module/Template> 모듈에서
 사용하는 문법을 이용한 변수이니 자세한 내용은 해당 모듈의 공식 문서를 확인하세요.
 
-앗! 그런데 C<content.xml>을 열어보면 XML 형식인 만큼 바이너리 형식은 아니라서
+앗! 그런데 C<<< content.xml >>>을 열어보면 XML 형식인 만큼 바이너리 형식은 아니라서
 읽을 수는 있지만 용량을 줄이기 위해 불필요한 빈 칸이 모두 제거되어
 알아보기가 너무 힘들어 어떻게 수정해야 할지 막막합니다.
 이럴 땐, L<CPAN의 XML::Tidy 모듈|https://metacpan.org/module/XML::Tidy>을 설치하고
@@ -224,7 +224,7 @@ C<xxxx>로 표시한 것은 가변 데이터의 위치를 쉽게 찾기 위해�
     #!bash
     $ xmltidy content.xml
 
-다시 C<xxxx>가 씌여있는 곳을 찾아봅니다.
+다시 C<<< xxxx >>>가 씌여있는 곳을 찾아봅니다.
 
 =for html <img src="2011-12-08-2.png" alt="XML에서 xxxx가 있는 위치" />
 <br  />
@@ -232,7 +232,7 @@ C<xxxx>로 표시한 것은 가변 데이터의 위치를 쉽게 찾기 위해�
 I<그림 2.> XML에서 xxxx가 있는 위치
 
 네, 있습니다. 그럼 이부분의 값만 바꿔주면, 이 안에 넣고 싶은 데로 넣을 수 있겠죠?
-이 부분을 템플릿 툴킷 형식인 C<[% name %]>, C<[% date.y %]>, ... 등으로 바꿔줍니다.
+이 부분을 템플릿 툴킷 형식인 C<<< [% name %] >>>, C<<< [% date.y %] >>>, ... 등으로 바꿔줍니다.
 
 =for html <img src="2011-12-08-3.png" alt="xxxx 부분을 변환" />
 <br  />
@@ -287,7 +287,7 @@ L<CPAN의 OpenDocument::Template 모듈|https://metacpan.org/module/OpenDocument
     $odt->generate;
 
 레퍼런스를 사용한다는 것을 빼면 코드 자체에 어려운 부분은 없습니다.
-결국 핵심은 C<OpenDocument::Template> 객체를 생성하는 부분인데
+결국 핵심은 C<<< OpenDocument::Template >>> 객체를 생성하는 부분인데
 객체 생성시 각각의 속성이 의미하는 부분을 살펴보면 다음과 같습니다.
 
 =over
@@ -304,7 +304,7 @@ I<config>:       변경될 내용들을 담고 있는 해시 레퍼런스입니�
 
 =item -
 
-I<template_dir>: C<config>에서 템플릿으로 사용할 파일을 저장하는 디렉토리입니다.
+I<template_dir>: C<<< config >>>에서 템플릿으로 사용할 파일을 저장하는 디렉토리입니다.
 
 
 =item -
@@ -390,8 +390,8 @@ FormNa는 서식 파일을 받아볼 수 있습니다.
 =head3 컨트롤러
 
 사용자가 웹에서 입력한 값을 이용해 서식 파일을 만들고자 합니다.
-C<form_create_do> 컨트롤러는 C<form_index.tt> 파일에서 넘겨 준 변수를
-가져와 C<content.xml>에 넘겨줍니다.
+C<<< form_create_do >>> 컨트롤러는 C<<< form_index.tt >>> 파일에서 넘겨 준 변수를
+가져와 C<<< content.xml >>>에 넘겨줍니다.
 
     #!perl
     sub form_create_do :Chained('index') :PathPart('form_create_do') :Args(0) {
@@ -440,7 +440,7 @@ C<form_create_do> 컨트롤러는 C<form_index.tt> 파일에서 넘겨 준 변�
         undef $fh;
     }
 
-C<form_create_do> 컨트롤러의 가장 아래쪽 다섯 줄의 코드는 생성한 ODT 파일을
+C<<< form_create_do >>> 컨트롤러의 가장 아래쪽 다섯 줄의 코드는 생성한 ODT 파일을
 다운로드 받을 수 있게 적절한 HTTP 응답 헤더를 만든 후 파일의 내용을
 응답 본문에 뿌려줍니다.
 
@@ -462,7 +462,7 @@ C<form_create_do> 컨트롤러의 가장 아래쪽 다섯 줄의 코드는 생�
 =head3 content.xml
 
 처음 크리스마스 카드를 만들 때 처럼 ODT를 생성한 후
-C<content.xml> 파일을 변경합니다.
+C<<< content.xml >>> 파일을 변경합니다.
 
     #!xml
     <text:p text:style-name="Standard">[% subject %]</text:p>
@@ -512,18 +512,18 @@ MS Office 최신 버전은 ODF를 지원한다고 하는데 이렇게 자동 생
 
 =head3 팁 하나.
 
-C<xxxx>를 넣고 C<xxxx>를 찾아 변수를 바꾸는 작업을 해보면 꽤 귀찮습니다.
+C<<< xxxx >>>를 넣고 C<<< xxxx >>>를 찾아 변수를 바꾸는 작업을 해보면 꽤 귀찮습니다.
 틀이 될 문서를 만드는 과정이라면 수도 없이 특정 문자를 변수로 변경해야 하는데
-이를 해결하려면 애초에 C<template.odt>를 만들때 변수가 들어가야 하는 곳이라면
-처음부터 C<[% .. %]>와 함께 넣으면 작업이 더욱 간편해집니다.
+이를 해결하려면 애초에 C<<< template.odt >>>를 만들때 변수가 들어가야 하는 곳이라면
+처음부터 C<<< [% .. %] >>>와 함께 넣으면 작업이 더욱 간편해집니다.
 
 
 =head3 팁 둘.
 
-ODT 파일에 C<뷁뷁샭략> 같은 문자가 들어가기도 합니다.
+ODT 파일에 C<<< 뷁뷁샭략 >>> 같은 문자가 들어가기도 합니다.
 이것은 인코딩 문제로 Catalyst의 설정 파일에서 UTF-8을 설정하면 해결됩니다.
 
-C<TT.pm> 모듈에는 C<ENCODING => 'utf8'>을 추가합니다.
+C<<< TT.pm >>> 모듈에는 C<<< ENCODING => 'utf8' >>>을 추가합니다.
 
     #!perl
     __PACKAGE__->config(
@@ -532,7 +532,7 @@ C<TT.pm> 모듈에는 C<ENCODING => 'utf8'>을 추가합니다.
         ENCODING           => 'utf8',
     );
 
-C<FormNa/Web.pm> 모듈에는 유니코드 인코딩 모듈을 추가합니다.
+C<<< FormNa/Web.pm >>> 모듈에는 유니코드 인코딩 모듈을 추가합니다.
 
     #!perl
     use Catalyst qw/

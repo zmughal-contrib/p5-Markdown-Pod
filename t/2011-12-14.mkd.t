@@ -94,7 +94,7 @@ I<그림 3.> Shiolink를 내려받는 위치
 
 =head2 고스트(Shiolink Perl)의 구성
 
-Shiolink는 C<C:\...\ghost\Shiolink_Perl_Simple\ghost> 이하에 구성된 파일을 통해 구동됩니다.
+Shiolink는 C<<< C:\...\ghost\Shiolink_Perl_Simple\ghost >>> 이하에 구성된 파일을 통해 구동됩니다.
 먼저, 각 펄 스크립트들이 어떤 역할을 하는지 설치된 파일의 구성을 알아봅시다.
 
     #!plain
@@ -114,8 +114,8 @@ Shiolink는 C<C:\...\ghost\Shiolink_Perl_Simple\ghost> 이하에 구성된 파�
 
 이중에서 우리의 입맛대로 고치기 위해 필요한 것은 B<events.pl>뿐입니다.
 
-events.pl에서 불려지는 이벤트중 가장 대표적인 것은 C<OnSecondChange>인데 이것은 초마다 호출되는 함수입니다.
-ShioriPerl은 이 함수가 60번 호출될 때(즉, 60초 후) C<OnAITalk>를 호출해 저장된 문장을 무작위로 출력하는 방식으로 구동됩니다.
+events.pl에서 불려지는 이벤트중 가장 대표적인 것은 C<<< OnSecondChange >>>인데 이것은 초마다 호출되는 함수입니다.
+ShioriPerl은 이 함수가 60번 호출될 때(즉, 60초 후) C<<< OnAITalk >>>를 호출해 저장된 문장을 무작위로 출력하는 방식으로 구동됩니다.
 
 
 =head2 입맛대로 고쳐보자
@@ -128,7 +128,7 @@ ShioriPerl은 이 함수가 60번 호출될 때(즉, 60초 후) C<OnAITalk>를 �
 =head3 lib 디렉토리 변경
 
 먼저 CPAN 모듈을 사용하기 위한 준비를 합니다. 
-C<init.pl>를 열어 가장 윗 줄에 있는 
+C<<< init.pl >>>를 열어 가장 윗 줄에 있는 
 
     #!perl
     our @INC = ('./perl/lib');
@@ -181,8 +181,8 @@ C<init.pl>를 열어 가장 윗 줄에 있는
     }
 
 이제 기존 AI 대화 로직을 오늘의유머에서 추출한 댓글을 말하도록 바꾸어야합니다.
-기존 구조는 C<OnAITalk> 함수에서 C<speak> 함수를 호출 후 반환되는 값을 출력했습니다.
-따라서, 단순히 C<speak> 함수를 C<getTodayHumorReply> 함수로 대체하면 됩니다.
+기존 구조는 C<<< OnAITalk >>> 함수에서 C<<< speak >>> 함수를 호출 후 반환되는 값을 출력했습니다.
+따라서, 단순히 C<<< speak >>> 함수를 C<<< getTodayHumorReply >>> 함수로 대체하면 됩니다.
 아래와 같은 원본을
 
     #!perl

@@ -98,7 +98,7 @@ Mojolicious::Lite를 기반으로 한 간단한 웹 어플리케이션 뼈대를
     $ mojo generate lite_app
 
 오늘은 간소화 버전이 아닌 정식 웹 어플리케이션을 만들어 봅시다.
-따라서 C<lite_app> 대신 C<app> 타입으로 지정합니다.
+따라서 C<<< lite_app >>> 대신 C<<< app >>> 타입으로 지정합니다.
 어플리케이션의 이름은 Chat로 지어주었습니다.
 
     #!bash
@@ -145,15 +145,15 @@ Mojolicious::Lite를 기반으로 한 간단한 웹 어플리케이션 뼈대를
     
     9 directories, 7 files
 
-C<lib> 아래에 있는 부분이 서버의 컨트롤러 부분이겠군요.
-C<log> 디렉터리에는 로그를 남길 것입니다.
-C<public>에는 공통적으로 쓰이는 정적 파일이 올라갈 것입니다. 여기서는 html 페이지를 보관하고 있네요.
-C<script>에는 구동 스크립트가 들어 있습니다.
-C<t> 디렉터리에는 테스트 묶음이 들어갈 것입니다.
-C<templates> 부분은 서버의 뷰 부분을 담당하고 있는 친구들인가 보군요.
+C<<< lib >>> 아래에 있는 부분이 서버의 컨트롤러 부분이겠군요.
+C<<< log >>> 디렉터리에는 로그를 남길 것입니다.
+C<<< public >>>에는 공통적으로 쓰이는 정적 파일이 올라갈 것입니다. 여기서는 html 페이지를 보관하고 있네요.
+C<<< script >>>에는 구동 스크립트가 들어 있습니다.
+C<<< t >>> 디렉터리에는 테스트 묶음이 들어갈 것입니다.
+C<<< templates >>> 부분은 서버의 뷰 부분을 담당하고 있는 친구들인가 보군요.
 
 간단하게 웹 서비스를 한번 실행해 봅시다.
-아래와 같이 C<script> 디렉터리에 들어있는 C<chat> 스크립트를 C<morbo> 명령을 통해 실행합니다.
+아래와 같이 C<<< script >>> 디렉터리에 들어있는 C<<< chat >>> 스크립트를 C<<< morbo >>> 명령을 통해 실행합니다.
 
     #!bash
     ~/tmp/chat$ morbo script/chat 
@@ -171,8 +171,8 @@ I<그림 1.> 생성된 뼈대를 구동해 열어본 웹 페이지
 
 =head2 비동기 채팅 만들기
 
-C<lib/Chat.pm> 파일에 chat라는 라우트를 추가해 봅시다.
-파일을 열면 아까 열어본 C</welcome>도 여기에 정의되어 있습니다.
+C<<< lib/Chat.pm >>> 파일에 chat라는 라우트를 추가해 봅시다.
+파일을 열면 아까 열어본 C<<< /welcome >>>도 여기에 정의되어 있습니다.
 
     #!perl
     package Chat;
@@ -191,13 +191,13 @@ C<lib/Chat.pm> 파일에 chat라는 라우트를 추가해 봅시다.
     
     1;
 
-C</welcome> 라우트를 등록하는 줄 하단에 C</chat>도 같은 형태로 추가합니다.
+C<<< /welcome >>> 라우트를 등록하는 줄 하단에 C<<< /chat >>>도 같은 형태로 추가합니다.
 
     #!perl
     $r->route('/chat')->to('ChatControl#chatAction');
 
-C<to>에 전달하는 C<ChatControl#chatAction>은 "C<ChatControl>이라는
-컨트롤러에 C<chatAction>이라는 액션을 수행해 주세요."라고 말하는 것과 같습니다.
+C<<< to >>>에 전달하는 C<<< ChatControl#chatAction >>>은 "C<<< ChatControl >>>이라는
+컨트롤러에 C<<< chatAction >>>이라는 액션을 수행해 주세요."라고 말하는 것과 같습니다.
 같은 방식으로 웹소켓을 위한 라우트도 추가합니다.
 
     #!perl
@@ -206,8 +206,8 @@ C<to>에 전달하는 C<ChatControl#chatAction>은 "C<ChatControl>이라는
 
 =head3 컨트롤러 작성하기
 
-C<Chat.pm>에 등록해 준 컨트롤러 부분을 구현해봅시다.
-C<lib/Chat/ChatControl.pm> 파일을 만들고 chatAction 함수와 wsAction 함수를 만듭니다.
+C<<< Chat.pm >>>에 등록해 준 컨트롤러 부분을 구현해봅시다.
+C<<< lib/Chat/ChatControl.pm >>> 파일을 만들고 chatAction 함수와 wsAction 함수를 만듭니다.
 
     #!perl
     package Chat::ChatControl;
@@ -256,18 +256,18 @@ C<lib/Chat/ChatControl.pm> 파일을 만들고 chatAction 함수와 wsAction 함
     
     1;
 
-C<chatAction>은 채팅 웹페이지 위에 표기할 메시지를 전달해 
+C<<< chatAction >>>은 채팅 웹페이지 위에 표기할 메시지를 전달해 
 단순히 템플렛을 랜더링합니다.
 
-C<wsAction>은 웹 소켓으로 통신하는 로직을 작성했습니다.
-먼저, C<$self->tx>를 통해 현재 요청에 대한 트랙잭션 객체(Mojo::Transaction)를 얻습니다.
+C<<< wsAction >>>은 웹 소켓으로 통신하는 로직을 작성했습니다.
+먼저, C<<< $self->tx >>>를 통해 현재 요청에 대한 트랙잭션 객체(Mojo::Transaction)를 얻습니다.
 이 경우 웹 소켓 트랙잭션 객체(Mojo::Transaction::WebSocket)가 될 것입니다.
 요청받은 모든 트랜잭션은 단순히 패키지 해시에 보관합니다.
 
-C<$self->on>을 통해 현재 요청에 대한 트랜잭션에 이벤트 콜백을 등록합니다.
-특히 웹 소켓을 통해 메시지가 도착하면 C<message> 이벤트가 수행됩니다.
+C<<< $self->on >>>을 통해 현재 요청에 대한 트랜잭션에 이벤트 콜백을 등록합니다.
+특히 웹 소켓을 통해 메시지가 도착하면 C<<< message >>> 이벤트가 수행됩니다.
 그러면 보관했던 모든 트랜잭션, 즉 요청했던 모든 클라이언트에게 메시지를 전달합니다.
-C<wsAction>의 행동을 위의 두 줄로 요약하면 아래와 같습니다.
+C<<< wsAction >>>의 행동을 위의 두 줄로 요약하면 아래와 같습니다.
 
 =over
 
@@ -287,8 +287,8 @@ C<wsAction>의 행동을 위의 두 줄로 요약하면 아래와 같습니다.
 =head3 뷰 작성하기
 
 이제 뷰 부분을 만들어 보겠습니다.
-C<templeates> 디렉터리로 이동한 후 C<ChatControl> 디렉터리를
-만들고 그 안에 C<chatAction.html.ep> 파일을 만듭니다.
+C<<< templeates >>> 디렉터리로 이동한 후 C<<< ChatControl >>> 디렉터리를
+만들고 그 안에 C<<< chatAction.html.ep >>> 파일을 만듭니다.
 
     #!bash
     $ mkdir ChatControl
@@ -311,8 +311,8 @@ C<templeates> 디렉터리로 이동한 후 C<ChatControl> 디렉터리를
     </form>
 
 채팅을 보일 창 한 개와 채팅을 입력할 부분과 보낼 버튼을 추가 했습니다.
-이제 레이아웃을 작성해 볼까요? 이번에는 C<templates/layouts> 디렉터리에
-C<chatAction.html.ep>에서 사용한 레이아웃 파일을 만듭니다.
+이제 레이아웃을 작성해 볼까요? 이번에는 C<<< templates/layouts >>> 디렉터리에
+C<<< chatAction.html.ep >>>에서 사용한 레이아웃 파일을 만듭니다.
 
     #!bash
     $ cd ..
@@ -389,10 +389,10 @@ C<chatAction.html.ep>에서 사용한 레이아웃 파일을 만듭니다.
 
 간단한 자바스크립트 코드를 이용해 웹 소켓의 메시지를 송수신합니다.
 브라우저가 웹 소켓을 지원하지 않는지 검사한 뒤, 서버와 접속을 수행합니다.
-웹 소켓을 통해 메시지를 받으면 C<onmessage>에 등록한 함수가 호출되어 메시지를 출력합니다.
-메시지를 보낼 때에는 C<ws.send(...)>와 같이 웹 소켓을 통해 전달하고 있습니다.
+웹 소켓을 통해 메시지를 받으면 C<<< onmessage >>>에 등록한 함수가 호출되어 메시지를 출력합니다.
+메시지를 보낼 때에는 C<<< ws.send(...) >>>와 같이 웹 소켓을 통해 전달하고 있습니다.
 클라이언트에서 메시지를 보낸 이후 페이지를 다시 불러들이는 것을 막기 위해 
-C<preventDefault()>를 걸었습니다.
+C<<< preventDefault() >>>를 걸었습니다.
 
 그럼 작성한 소스 코드를 실행해봅시다.
 

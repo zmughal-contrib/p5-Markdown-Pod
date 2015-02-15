@@ -31,8 +31,8 @@ webmaster I<at> dormouse.pe.kr
 =head2 시작하며
 
 이것저것 스크린샷이 포함된 글을 쓰실 때, 대개 어떻게 하시나요?
-C<Shift + PrtSc> 키를 이용하면 현재 화면을 쉽게 클립보드에 저장할 수 있습니다.
-이렇게 클립보드로 저장된 이미지는 어디서든 C<Ctrl-V> 로 붙여넣기를 할 수 있죠.
+C<<< Shift + PrtSc >>> 키를 이용하면 현재 화면을 쉽게 클립보드에 저장할 수 있습니다.
+이렇게 클립보드로 저장된 이미지는 어디서든 C<<< Ctrl-V >>> 로 붙여넣기를 할 수 있죠.
 그러나, 스크린샷이 파일 형태로 필요하다면 어떨까요?
 이미지 편집 프로그램을 실행시킨 다음, 붙여넣기를 한 후, 저장을 해야 합니다.
 서너장이 아니라 수십 수백장의 화면을 갈무리해야 한다면
@@ -44,7 +44,7 @@ C<Shift + PrtSc> 키를 이용하면 현재 화면을 쉽게 클립보드에 저
 =head2 준비물
 
 우선 현재 화면을 갈무리해서, 그것을 특정 파일로 저장하는 기능을 구현해야 합니다.
-윈도우즈는 기본적으로 C<Shift + PrtSc> 키를 입력하면 전체화면을 갈무리해서 클립보드에 저장합니다.
+윈도우즈는 기본적으로 C<<< Shift + PrtSc >>> 키를 입력하면 전체화면을 갈무리해서 클립보드에 저장합니다.
 이 기능을 이용한다고 했을때 고민해야할 부분은 다음과 같습니다.
 
 =over
@@ -56,7 +56,7 @@ C<Shift + PrtSc> 키를 이용하면 현재 화면을 쉽게 클립보드에 저
 
 =item -
 
-결정된 행위가 이루어졌을 경우 C<Shift + PrtSc> 키가 입력된 것처럼 동작
+결정된 행위가 이루어졌을 경우 C<<< Shift + PrtSc >>> 키가 입력된 것처럼 동작
 
 
 =item -
@@ -110,7 +110,7 @@ L<CPAN의 File::Slurp 모듈|https://metacpan.org/module/File::Slurp>
 
 =back
 
-L<딸기펄|http://strawberryperl.com>을 사용한다면 콘솔에서 C<cpan> 명령을 이용해서 설치합니다.
+L<딸기펄|http://strawberryperl.com>을 사용한다면 콘솔에서 C<<< cpan >>> 명령을 이용해서 설치합니다.
 L<딸기펄 5.14|http://strawberryperl.com/beta/index.html> 버전에서 필요한 모든 모듈이 정상적으로
 설치되는 것을 확인했으므로 버전 선택시 참고하시길 바랍니다.
 
@@ -127,9 +127,9 @@ L<ActiveState사의 ActivePerl|http://www.activestate.com/activeperl>을 사용�
 
 =head2 뼈대 만들기
 
-GUI 구성은 윈도우즈 네이티브 UI 라이브러리인 C<Win32::GUI> 모듈을 사용합니다.
-윈도우즈의 시스템 트레이에 아이콘을 상주시키는 것은 C<Win32::GUI> 모듈이 제공하는
-C<AddNotifyIcon> 메소드를 사용하면 간단하게 구현할 수 있습니다.
+GUI 구성은 윈도우즈 네이티브 UI 라이브러리인 C<<< Win32::GUI >>> 모듈을 사용합니다.
+윈도우즈의 시스템 트레이에 아이콘을 상주시키는 것은 C<<< Win32::GUI >>> 모듈이 제공하는
+C<<< AddNotifyIcon >>> 메소드를 사용하면 간단하게 구현할 수 있습니다.
 기본적인 뼈대 코드는 다음과 같습니다.
 
     #!perl
@@ -175,20 +175,20 @@ C<AddNotifyIcon> 메소드를 사용하면 간단하게 구현할 수 있습니�
     Win32::GUI::Dialog;
 
 작성한 스크립트가 있는 디렉터리와 동일한 위치에 마음에 드는 아이콘을 구한 뒤
-C<icon.ico>로 이름을 바꿔서 저장한 후 스크립트를 실행하면
+C<<< icon.ico >>>로 이름을 바꿔서 저장한 후 스크립트를 실행하면
 시스템 트레이에 아이콘이 나타나는 것을 볼 수 있습니다.
-아이콘에 마우스를 가져가면 C<Click to Screenshot!>이라는 툴팁이 표시될 것입니다.
-아이콘 위에서 마우스 왼쪽 버튼을 누르면 C<onClick> 이벤트가 발생하며
-오른쪽 버튼을 누르면 C<onRightClick> 이벤트가 발생합니다.
-오른쪽 버튼을 누를 경우 연결된 함수 레퍼런스가 C<-1>을 반환하므로 프로그램이 종료됩니다.
+아이콘에 마우스를 가져가면 C<<< Click to Screenshot! >>>이라는 툴팁이 표시될 것입니다.
+아이콘 위에서 마우스 왼쪽 버튼을 누르면 C<<< onClick >>> 이벤트가 발생하며
+오른쪽 버튼을 누르면 C<<< onRightClick >>> 이벤트가 발생합니다.
+오른쪽 버튼을 누를 경우 연결된 함수 레퍼런스가 C<<< -1 >>>을 반환하므로 프로그램이 종료됩니다.
 
 I<그림 1.> 실행 후 시스템 트레이에 아이콘이 적재된 화면 L<(원본)|2011-12-07-1.png>
 =for html <img src="2011-12-07-1.png" alt="실행 후 시스템 트레이에 아이콘이 적재된 화면" width="700" />
 
 이제 스크린샷을 찍을 부분을 구현해야겠죠.
-C<PrtSc> 명령은 L<CPAN의 Win32::GuiTest 모듈|https://metacpan.org/module/Win32::GuiTest>의 C<SendKeys> 함수를 이용하면 됩니다.
-C<SendKeys> 함수는 문자 그대로 특정한 키 입력을 컴퓨터에게 던져주는 역할을 합니다.
-C<onClick> 이벤트 발생시 실행시키는 함수 레퍼런스에 다음 내용을 추가합니다.
+C<<< PrtSc >>> 명령은 L<CPAN의 Win32::GuiTest 모듈|https://metacpan.org/module/Win32::GuiTest>의 C<<< SendKeys >>> 함수를 이용하면 됩니다.
+C<<< SendKeys >>> 함수는 문자 그대로 특정한 키 입력을 컴퓨터에게 던져주는 역할을 합니다.
+C<<< onClick >>> 이벤트 발생시 실행시키는 함수 레퍼런스에 다음 내용을 추가합니다.
 
     #!perl
     ...
@@ -211,10 +211,10 @@ C<onClick> 이벤트 발생시 실행시키는 함수 레퍼런스에 다음 내
         ...
     );
 
-C<{PRTSCR}> 앞의 C<+>는 C<Shift>를 같이 입력한다는 의미입니다.
-참고로 C<^>은 C<Ctrl>, C<%>는 C<Alt>를 의미합니다.
+C<<< {PRTSCR} >>> 앞의 C<<< + >>>는 C<<< Shift >>>를 같이 입력한다는 의미입니다.
+참고로 C<<< ^ >>>은 C<<< Ctrl >>>, C<<< % >>>는 C<<< Alt >>>를 의미합니다.
 여러 키 조합과 딜레이 타임을 옵션으로 지정할 수도 있기 때문에,
-C<SendKeys>와 C<Win32::GUI> 모듈의 타이머 기능을 결합하면 여러가지로 활용이 가능합니다.
+C<<< SendKeys >>>와 C<<< Win32::GUI >>> 모듈의 타이머 기능을 결합하면 여러가지로 활용이 가능합니다.
 예를 들자면, 특정 온라인 게임에 대응하는 매크로도 만들 수 있겠죠. ;-)
 
 
@@ -233,11 +233,11 @@ L<CPAN의 Win32::Clipboard 모듈|https://metacpan.org/module/Win32::Clipboard>�
 
 클립보드에 저장된 비트맵을 불러오는 것이므로 클립보드에 있는 것이
 이미지인지 텍스트인지 확인할 필요도 없을 것 같습니다.
-C<$bitmap> 스칼라 변수에 비트맵 이미지가 고스란히 저장되기 때문에
-C<.bmp> 파일에 써주기만 하면 파일 저장도 끝납니다.
+C<<< $bitmap >>> 스칼라 변수에 비트맵 이미지가 고스란히 저장되기 때문에
+C<<< .bmp >>> 파일에 써주기만 하면 파일 저장도 끝납니다.
 파일명을 일일이 사용자에게 물어보는 것도 번거로운 일이니까
 현재 날짜과 시간을 사용해서 자동으로 저장하도록 하겠습니다.
-C<onClick> 이벤트에 대한 함수 레퍼런스는 이렇게 바뀝니다.
+C<<< onClick >>> 이벤트에 대한 함수 레퍼런스는 이렇게 바뀝니다.
 
     #!perl
     ...
@@ -286,16 +286,16 @@ BMP 대신 PNG 파일 포맷을 사용해서 용량 문제를 해결하도록 �
 
 BMP를 PNG로 변환하는 방법은 다양합니다.
 CPAN의 L<GD 모듈|https://metacpan.org/module/GD>, L<Image::Magick|https://metacpan.org/module/Image::Magick>,
-L<Imager|https://metacpan.org/module/Imager>는 물론이고 C<Win32::GUI> 모듈에 딸려 나오는
+L<Imager|https://metacpan.org/module/Imager>는 물론이고 C<<< Win32::GUI >>> 모듈에 딸려 나오는
 [Win32::GUI::DIBitmap][cpan-win32-gui-dbbitmap] 모듈을 사용하는 등
 여러가지 방법이 있습니다.
 다만 각각의 모듈은 모두 윈도우즈에 소소한 문제들이 있습니다.
-C<GD> 모듈의 경우 BMP 포맷을 지원하지 않으며,
-C<Image::Magick>는 따로 바이너리 라이브러리를 설치한 후 CPAN 모듈을
+C<<< GD >>> 모듈의 경우 BMP 포맷을 지원하지 않으며,
+C<<< Image::Magick >>>는 따로 바이너리 라이브러리를 설치한 후 CPAN 모듈을
 설치해야 하므로 초보자의 경우 접근이 어렵습니다.
-또한 C<Imager>는 BMP를 지원하지면 결정적으로 윈도우즈에서
+또한 C<<< Imager >>>는 BMP를 지원하지면 결정적으로 윈도우즈에서
 캡쳐할때 생성되는 BMP 형식(만)을 지원하지 않습니다.
-마지막으로 C<Win32::GUI::DIBitmap> 모듈의 경우 ActivePerl의 경우 문제없이
+마지막으로 C<<< Win32::GUI::DIBitmap >>> 모듈의 경우 ActivePerl의 경우 문제없이
 사용이 가능하나 딸기펄 사용자의 경우 컴파일러 호환 문제로 설치되지 않아
 사용할 수가 없습니다.
 
@@ -305,8 +305,8 @@ L<PNG 라이브러리 공식 홈페이지|http://www.libpng.org/pub/png/pngcode.
 L<bmp2png|http://cetus.sakura.ne.jp/softlab/b2p-home/>를 소개하고 있습니다.
 bmp2png는 단 하나의 실행파일로 구성되어 있으며 윈도우즈 명령줄에서
 인자로 BMP 파일을 넘기면 확장자만 바꿔서 PNG 파일을 생성해줍니다.
-bmp2png를 다운로드 받아서 압축을 푼 다음에 C<BMP2PNG.EXE> 파일을 스크립트가
-있는 경로에 두거나 또는 C<PATH> 환경변수로 관리되고 있는 디렉터리에 두세요.
+bmp2png를 다운로드 받아서 압축을 푼 다음에 C<<< BMP2PNG.EXE >>> 파일을 스크립트가
+있는 경로에 두거나 또는 C<<< PATH >>> 환경변수로 관리되고 있는 디렉터리에 두세요.
 
 새롭게 갱신한 코드 조각은 다음과 같을 것입니다.
 
@@ -347,7 +347,7 @@ I<그림 2.> PNG로 변환한 캡처 화면 L<(원본)|2011-12-07-3.png>
 이제 이 콘솔 창을 없애 봅시다.
 L<CPAN의 PAR::Packer 모듈|https://metacpan.org/module/Par::Packer>을 사용하면
 실행 바이너리를 만드는 시점에 옵션을 이용해 콘솔 창을 보이지 않게 할 수 있습니다.
-C<PAR::Packer>를 이용해서 바이너리로 만들지 않더라도
+C<<< PAR::Packer >>>를 이용해서 바이너리로 만들지 않더라도
 콘솔 창을 없애려면 L<CPAN의 Win32::HideConsole 모듈|https://metacpan.org/module/Win32::HideConsole>을
 이용(L<CPAN의 Win32::Console 모듈|https://metacpan.org/module/Win32::Console>도 한번 확인해보세요) 합니다.
 
@@ -364,15 +364,15 @@ C<PAR::Packer>를 이용해서 바이너리로 만들지 않더라도
 
 =head2 트레이 아이콘을 프로그램 안에 내장하고 싶어요!
 
-현재 구현한 스크립트대로라면 C<icon.ico> 파일을
+현재 구현한 스크립트대로라면 C<<< icon.ico >>> 파일을
 항상 스크립트와 함께 들고 다녀야 합니다.
-이것은 꽤나 번거로운 일이기 때문에 아예 C<icon.ico> 파일을
+이것은 꽤나 번거로운 일이기 때문에 아예 C<<< icon.ico >>> 파일을
 코드 안에 내장시키는 것이 더 좋을 것 같습니다.
-C<Win32::GUI::BitmapInline> 모듈은 BASE64 형식으로 인코딩된
+C<<< Win32::GUI::BitmapInline >>> 모듈은 BASE64 형식으로 인코딩된
 데이터를 비트맵 형식으로 변환해서 받아들이기 때문에
 이 모듈을 사용하면 스크립트 내부에 아이콘을
 문자열 형식으로 저장할 수 있습니다.
-C<Win32::GUI> 모듈을 설치했다면 바로 사용이 가능합니다.
+C<<< Win32::GUI >>> 모듈을 설치했다면 바로 사용이 가능합니다.
 
 우선 사용할 아이콘을 BASE64 형식으로 인코딩해야 합니다.
 이것은 콘솔 창에서 단 한 줄의 코드로 알아낼 수 있습니다.
@@ -606,12 +606,12 @@ MS 윈도우 환경에서 약간의 Perl 지식만 있다면 Perl을 이용해 �
 마지막으로 이 프로그램에 단축키 기능을 추가한다면 어떨까요?
 이를테면 윈도우 환경 어디서나 CTRL-F12 를 클릭하면 이 기능이 동작하도록 하는 것입니다.
 윈도우용 Perl은 L<Win32::API|https://metacpan.org/module/Win32::API> 모듈을 이용해 윈도우 기본 API를 직접 사용할 수 있기 때문에,
-C<user32.dll>의 C<RegisterHotKey/UnregisterHotKey>를 임포트해 적당한 키 조합을 등록하고
+C<<< user32.dll >>>의 C<<< RegisterHotKey/UnregisterHotKey >>>를 임포트해 적당한 키 조합을 등록하고
 키보드 입력을 전역으로 모니터링(후킹)하면, 단축키를 이용한 스크린샷의 조작이 가능합니다.
 단축키 방식을 도입할 경우 지금까지 사용한 전체 화면 스크린캡쳐 외에도,
-C<Alt + PrtSc>를 사용해 현재 활성화 된 창만을 갈무리 할 수 있습니다.
+C<<< Alt + PrtSc >>>를 사용해 현재 활성화 된 창만을 갈무리 할 수 있습니다.
 지금처럼 아이콘을 클릭하는 방식이라면 아이콘을 클릭하는 순간 활성창이
 작업표시줄로 바뀌기 때문에, 항상 작업 표시줄만 갈무리 될 것입니다.
 기사에서 사용한 모든 화면은 단축키까지 구현한 완전한 스크립트를 이용해서 갈무리한 것입니다.
-C<PAR::Packer>로 빌드한 L<실행 바이너리와 전체 소스|http://www.nightowl.pe.kr/software/prtscrsave>도
+C<<< PAR::Packer >>>로 빌드한 L<실행 바이너리와 전체 소스|http://www.nightowl.pe.kr/software/prtscrsave>도
 꼭 다운로드 받아서 확인해보세요. ;-)

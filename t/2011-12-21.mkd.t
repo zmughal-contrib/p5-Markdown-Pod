@@ -134,16 +134,16 @@ Etrade 증권 서비스를 로긴 후 세션을 유지
 
 우선 X-ing API COM, Res 파일을 L<공식 홈페이지|http://etrade.co.kr>에서 받습니다.
 파일을 받기 위해서는 Etrade 증권 계좌가 필요하며 회원 가입을 해야 합니다.
-L<Etrade 증권 홈페이지|http://etrade.co.kr>에 들어가서 검색창에서 C<X-ing API>를
+L<Etrade 증권 홈페이지|http://etrade.co.kr>에 들어가서 검색창에서 C<<< X-ing API >>>를
 넣고 검색합니다.
 
 =for html <img src="2011-12-21-2.jpg" alt="필요한 파일 다운로드" width="700" />
 I<그림 2.> 필요한 파일 다운로드 L<(원본)|2011-12-21-2.jpg>
 
-C:\XING 디렉토리를 생성한 후 다운로드 받은 파일(C<COM(2011.04.26).zip>,
-C<Res(2011.10.20).zip>) 의 압축을 풀어 디렉토리에 넣습니다.
-C<COM(2011.04.26)>는 C<COM>으로 C<Res(2011.10.20)>는 C<Res>로 이름을 변경합니다.
-C<Programs(2011.11.10).zip> DLL 파일은 COM 파일의 최근 업데이트
+C:\XING 디렉토리를 생성한 후 다운로드 받은 파일(C<<< COM(2011.04.26).zip >>>,
+C<<< Res(2011.10.20).zip >>>) 의 압축을 풀어 디렉토리에 넣습니다.
+C<<< COM(2011.04.26) >>>는 C<<< COM >>>으로 C<<< Res(2011.10.20) >>>는 C<<< Res >>>로 이름을 변경합니다.
+C<<< Programs(2011.11.10).zip >>> DLL 파일은 COM 파일의 최근 업데이트
 내역이므로 COM 디렉터리 아래에 압축을 풀어줍니다.
 파일을 풀고난 후 디렉토리 구조는 다음과 같습니다.
 
@@ -156,9 +156,9 @@ C<Programs(2011.11.10).zip> DLL 파일은 COM 파일의 최근 업데이트
 
 '-']... "허허 이런 것은 얼른 얼른 넘어갑시다"라고 외치실 분들을 위해
 사실 따로 파일(L<다운로드|http://advent.perl.kr/2011/xing-demo.zip>)을 준비했습니다.
-이 파일을 다운로드 받은 후 C<C:\>에 압축을 풉니다.
+이 파일을 다운로드 받은 후 C<<< C:\ >>>에 압축을 풉니다.
 
-C<C:\XING\COM>에 들어가서 C<Reg.bat>를 실행해 X-ing COM 오브젝트를 등록합니다.
+C<<< C:\XING\COM >>>에 들어가서 C<<< Reg.bat >>>를 실행해 X-ing COM 오브젝트를 등록합니다.
 
 =for html <img src="2011-12-21-3.jpg" alt="설치" width="700" />
 I<그림 3.> 설치 L<(원본)|2011-12-21-3.jpg>
@@ -179,7 +179,7 @@ I<그림 4.> HTS 다운로드 L<(원본)|2011-12-21-4.jpg>
 I<그림 5.> HTS 로그인 L<(원본)|2011-12-21-5.jpg>
 
 그림에 표시된 모의 증권 계좌 번호를 적어 두도록 합니다.
-그리고 모의 투자 계좌 비밀 번호는 C<0000>입니다.
+그리고 모의 투자 계좌 비밀 번호는 C<<< 0000 >>>입니다.
 
 =for html <img src="2011-12-21-6.jpg" alt="HTS 계정" width="700" />
 I<그림 6.> HTS 계정 L<(원본)|2011-12-21-6.jpg>
@@ -191,8 +191,8 @@ I<그림 6.> HTS 계정 L<(원본)|2011-12-21-6.jpg>
 
 =head2 X-ing API를 우아하게 Perl에서 사용 하도록 하자 '-'] 엣헴!
 
-C<Reg.bat>을 실행하면 X-ing COM 객체가 원도우에 등록됩니다.
-C<Win32::OLE>를 사용하면 COM이 제공하는 X-ing API를
+C<<< Reg.bat >>>을 실행하면 X-ing COM 객체가 원도우에 등록됩니다.
+C<<< Win32::OLE >>>를 사용하면 COM이 제공하는 X-ing API를
 Perl에서 직접 호출할 수 있기 때문에 정말 편리합니다.
 이것을 C++ 이나 Visual Basic으로 작성할 생각을하면
 상상만으로도 손가락이 얼얼해지는것 같네요;;
@@ -202,7 +202,7 @@ Perl에서 직접 호출할 수 있기 때문에 정말 편리합니다.
 
 우선 X-ing API로 로그인한 후 세션을 생성합니다.
 Win32::OLE 모듈을 로드할 때 이벤트 핸들링을 위해
-C<EVENTS>를 임포트한다는 점을 눈여겨 보세요.
+C<<< EVENTS >>>를 임포트한다는 점을 눈여겨 보세요.
 
     #!perl
     use 5.010;
@@ -211,13 +211,13 @@ C<EVENTS>를 임포트한다는 점을 눈여겨 보세요.
     use Carp;
     use Win32::OLE qw/EVENTS/;
 
-X-ing API에서 세션을 담당하는 C<XA_Session.XASession>을 불러 OLE 객체를 받도록 합니다.
+X-ing API에서 세션을 담당하는 C<<< XA_Session.XASession >>>을 불러 OLE 객체를 받도록 합니다.
 
     #!perl
     my $XASession = Win32::OLE->new('XA_Session.XASession')
         or croak Win32::OLE->LastError();
 
-그리고 C<XASession> 사용시 일어나는 모든 이벤트를 핸들 할수 있도록 다음과 같은 핸들러를 작성합니다.
+그리고 C<<< XASession >>> 사용시 일어나는 모든 이벤트를 핸들 할수 있도록 다음과 같은 핸들러를 작성합니다.
 
     #!perl
     my $XASessionEvents = sub {
@@ -249,22 +249,22 @@ X-ing API에서 세션을 담당하는 C<XA_Session.XASession>을 불러 OLE 객
 
 =item -
 
-C<1>: 로그인에 성공
+C<<< 1 >>>: 로그인에 성공
 
 
 =item -
 
-C<2>: 로그아웃에 성공
+C<<< 2 >>>: 로그아웃에 성공
 
 
 =item -
 
-C<3>: 연결 끊김
+C<<< 3 >>>: 연결 끊김
 
 
 =back
 
-이제 C<$XASession> 객체가 생성하는 모든 이벤트를 제어해보죠.
+이제 C<<< $XASession >>> 객체가 생성하는 모든 이벤트를 제어해보죠.
 
     #!perl
     Win32::OLE->WithEvents(
@@ -275,9 +275,9 @@ C<3>: 연결 끊김
     
     croak Win32::OLE->LastError() if Win32::OLE->LastError() != 0;
 
-C<WithEvents>를 사용하지 않으면 로드한 객체의 이벤트를 핸들링 하지않습니다.
-간혹 C<Win32::OLE>가 자동으로 이벤트 인터페이스를 판별 하지 못하는 객체도 있습니다.
-그럴 경우에는 직접 객체의 C<COCLASS>(C<IProvideClassInfo2>를 참조) 값이라던지
+C<<< WithEvents >>>를 사용하지 않으면 로드한 객체의 이벤트를 핸들링 하지않습니다.
+간혹 C<<< Win32::OLE >>>가 자동으로 이벤트 인터페이스를 판별 하지 못하는 객체도 있습니다.
+그럴 경우에는 직접 객체의 C<<< COCLASS >>>(C<<< IProvideClassInfo2 >>>를 참조) 값이라던지
 혹은 이벤트의 DISPATCH 인터페이스를 찾아 3번째 인자로 제공해야합니다.
 
 여기까지 수행하면 X-ing API의 OLE 객체를 얻을 수 있습니다.
@@ -338,11 +338,11 @@ I<서버연결종료>: 서버와 연결된 세션 종료
 =for html <img src="2011-12-21-7.jpg" alt="로그인 과정" width="700" />
 I<그림 7.> 로그인 과정 L<(원본)|2011-12-21-7.jpg>
 
-C<MessageLoop>를 호출 하는 시점에 프로그램은 C<QuitMessageLoop>가 호출되기 전까지
+C<<< MessageLoop >>>를 호출 하는 시점에 프로그램은 C<<< QuitMessageLoop >>>가 호출되기 전까지
 윈도우 메시지 루프 모드로 들어가서 이벤트를 디스패치하기 시작합니다.
-이렇게 해서 얻은 이벤트는 아까 작성한 C<XASessionEvents> 이벤트 핸들러가 처리합니다.
+이렇게 해서 얻은 이벤트는 아까 작성한 C<<< XASessionEvents >>> 이벤트 핸들러가 처리합니다.
 여기서는 로그인 세션을 성공적으로 생성된 것을 확인하면
-다음 작업을 위해 C<QuitMessageLoop>를 호출해서 이벤트 루프에서 빠져나옵니다.
+다음 작업을 위해 C<<< QuitMessageLoop >>>를 호출해서 이벤트 루프에서 빠져나옵니다.
 
 
 =head3 실시간으로 호가 및 체결 값 처리
@@ -376,17 +376,17 @@ I<그림 8.> 트랜잭션 L<(원본)|2011-12-21-8.jpg>
         or croak Win32::OLE->LastError();
 
 호가 데이터는 실시간으로 업데이트 되는 값이며 X-ing API에서는 실시간
-트랜잭션 구조체인 C<S3_>을 참조해 호가 데이터를 요청 및 추출합니다.
-앞서 압축을 풀어 C<Res> 폴더에 저장한 디렉토리의 파일을 적재합니다.
+트랜잭션 구조체인 C<<< S3_ >>>을 참조해 호가 데이터를 요청 및 추출합니다.
+앞서 압축을 풀어 C<<< Res >>> 폴더에 저장한 디렉토리의 파일을 적재합니다.
 
     #!perl
     $XAReal->LoadFromResFile("$FindBin::Bin/Res/Real/H1_.res")
         or croak Win32::OLE->LastError();
 
 KOSPI호가잔량 데이터에 대한 이벤트 핸들링 입니다.
-XAReal OLE객체가 제공하는 함수인 C<GetFieldData>로
-C<H1_.res> DATA MAP 파일을 참조해 데이터 블록에서 필드값을 추출합니다.
-첫 번째 인자인 C<OutBlock>은 DATA MAP을 참조할 때
+XAReal OLE객체가 제공하는 함수인 C<<< GetFieldData >>>로
+C<<< H1_.res >>> DATA MAP 파일을 참조해 데이터 블록에서 필드값을 추출합니다.
+첫 번째 인자인 C<<< OutBlock >>>은 DATA MAP을 참조할 때
 데이터 블록을 받았을 경우의 필드를 참조하라는 뜻입니다.
 
     #!perl
@@ -410,7 +410,7 @@ C<H1_.res> DATA MAP 파일을 참조해 데이터 블록에서 필드값을 추�
         }
     };
 
-C<$XAReal>이 받는 모든 이벤트를 C<$XARealEvents> 핸들러가 처리할 수 있도록 등록합니다.
+C<<< $XAReal >>>이 받는 모든 이벤트를 C<<< $XARealEvents >>> 핸들러가 처리할 수 있도록 등록합니다.
 
     #!perl
     Win32::OLE->WithEvents(
@@ -420,16 +420,16 @@ C<$XAReal>이 받는 모든 이벤트를 C<$XARealEvents> 핸들러가 처리할
     );
     croak Win32::OLE->LastError() if Win32::OLE->LastError() != 0;
 
-데이터를 보낼때 생성할 블록 데이터는 다음처럼 C<SetFieldData()> 함수를 호출해 생성할 수 있습니다.
+데이터를 보낼때 생성할 블록 데이터는 다음처럼 C<<< SetFieldData() >>> 함수를 호출해 생성할 수 있습니다.
 
     #!perl
     $XAReal->SetFieldData('InBlock', 'shcode', '000270');
     $XAReal->AdviseRealData();
 
-C<InBlock>은 DATA MAP을 참조시 데이터 블록을 보낼 경우의 필드를 참조하라는 뜻입니다.
-C<shcode>는 종목을 의미하며 C<000270>은 기아자동차의 코드 번호입니다.
+C<<< InBlock >>>은 DATA MAP을 참조시 데이터 블록을 보낼 경우의 필드를 참조하라는 뜻입니다.
+C<<< shcode >>>는 종목을 의미하며 C<<< 000270 >>>은 기아자동차의 코드 번호입니다.
 즉, 기아자동차의 호가 잔량을 요청한다는 뜻이죠.
-데이터 블록을 생성했으면 C<AviseReadData()> 함수를 호출해 실시간 데이터를 받습니다.
+데이터 블록을 생성했으면 C<<< AviseReadData() >>> 함수를 호출해 실시간 데이터를 받습니다.
 
 호가 잔량 데이터 핸들링 또한 이벤트를 처리해야 하므로
 이벤트 루프에 다시 진입해야 합니다.
@@ -437,7 +437,7 @@ C<shcode>는 종목을 의미하며 C<000270>은 기아자동차의 코드 번�
     #!perl
     Win32::OLE->MessageLoop();
 
-스크립트를 실행한 후 C<Ctrl-C> 명령으로 종료하면 응용 프로그램
+스크립트를 실행한 후 C<<< Ctrl-C >>> 명령으로 종료하면 응용 프로그램
 오류 창이 뜨지만 큰 상관은 없으니 가볍게 무시해도 됩니다. :)
 
 
@@ -457,15 +457,15 @@ C<shcode>는 종목을 의미하며 C<000270>은 기아자동차의 코드 번�
     $XAQuery->LoadFromResFile("$FindBin::Bin/res/Tran/t5501.res")
         or croak Win32::OLE->LastError();
 
-C<XA_DataSet.XAQuery> COM 객체를 이용해 OLE 객체를 생성했습니다.
+C<<< XA_DataSet.XAQuery >>> COM 객체를 이용해 OLE 객체를 생성했습니다.
 현물 매수/매도 주문을 위한 DATA MAP은
-C<Tran/t5501.res>에 정의되어 있으니 불러오도록 합니다.
+C<<< Tran/t5501.res >>>에 정의되어 있으니 불러오도록 합니다.
 
     #!perl
     my $XAQueryEvents = sub { };
 
 현물 주문 조회 트랜잭션의 경우 이벤트 호출로 받아 오는 데이터가 없으므로
-제대로 체결이 이루어졌는지 알려면 실시간 C<SC0> 핸들러를 이용해
+제대로 체결이 이루어졌는지 알려면 실시간 C<<< SC0 >>> 핸들러를 이용해
 주문 체결 이벤트를 다루도록 합니다.
 매수 주문을 넣기 위한 데이터 블록을 생성하고 요청하는 코드는 다음과 같습니다.
 
@@ -505,37 +505,37 @@ C<Tran/t5501.res>에 정의되어 있으니 불러오도록 합니다.
 
 =item -
 
-C<accno>: 증권 계좌 번호(지금은 모의투자 계좌 번호)
+C<<< accno >>>: 증권 계좌 번호(지금은 모의투자 계좌 번호)
 
 
 =item -
 
-C<passwd>: 증권계좌 암호
+C<<< passwd >>>: 증권계좌 암호
 
 
 =item -
 
-C<expcode>: 주식 번호(앞에 A를 앞에 붙임)
+C<<< expcode >>>: 주식 번호(앞에 A를 앞에 붙임)
 
 
 =item -
 
-C<qty>: 수량
+C<<< qty >>>: 수량
 
 
 =item -
 
-C<price>: 지정가일 경우 원하는 체결 가격
+C<<< price >>>: 지정가일 경우 원하는 체결 가격
 
 
 =item -
 
-C<memegb>: 매매 구분(C<1>은 매수, C<2>는 매도)
+C<<< memegb >>>: 매매 구분(C<<< 1 >>>은 매수, C<<< 2 >>>는 매도)
 
 
 =item -
 
-C<hogagb>: 호가유형 코드(C<00>는 지정가, C<03>은 시장, 등등)
+C<<< hogagb >>>: 호가유형 코드(C<<< 00 >>>는 지정가, C<<< 03 >>>은 시장, 등등)
 
 
 =back
@@ -543,7 +543,7 @@ C<hogagb>: 호가유형 코드(C<00>는 지정가, C<03>은 시장, 등등)
 그외 필드는 예제에 있는 값을 이용하시면 됩니다
 자세한 내용은 X-ing API 레퍼런스 문서를 참조하세요.
 
-이렇게 해서 생성한 데이터 블럭을 C<Request()> 함수를 호출해 주문합니다.
+이렇게 해서 생성한 데이터 블럭을 C<<< Request() >>> 함수를 호출해 주문합니다.
 주문을 내기만 해서는 접수가 이루어졌는지 알 수 없습니다.
 실시간으로 접수가 이루어졌는지 확인하려면
 실시간 트랜잭션 중 하나인 주식 주문 접수를 등록합니다.
@@ -567,7 +567,7 @@ C<hogagb>: 호가유형 코드(C<00>는 지정가, C<03>은 시장, 등등)
     $XAReal->AdviseRealData();
 
 실시간 주문 접수와는 달리 데이터 블럭을 직접 만들 필요가 없습니다.
-주문 접수가 이루어 졌을때 전달받는 값 중 하나인 C<ordno>(주문번호)를 출력합니다.
+주문 접수가 이루어 졌을때 전달받는 값 중 하나인 C<<< ordno >>>(주문번호)를 출력합니다.
 
 주문 한번 시원하게 날려볼까요? ;-)
 

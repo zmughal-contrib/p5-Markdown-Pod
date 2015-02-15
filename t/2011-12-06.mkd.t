@@ -79,10 +79,10 @@ PHP 페이지 몇개로 include를 나열하는 것은 더 소름끼치는 일�
 
 =head2 세상에 이런것이!
 
-위의 코드는 완전한 코드입니다. 즉 웹브라우저에 C</>로 요청을 하면 C<I can code in Christmas!!>가 출력됩니다.
+위의 코드는 완전한 코드입니다. 즉 웹브라우저에 C<<< / >>>로 요청을 하면 C<<< I can code in Christmas!! >>>가 출력됩니다.
 이보다 간단할 수는 없습니다.
 
-각 라우트 핸들러는 기본적으로 사용자 함수(C<sub>)입니다. GET 요청을 위해 C<get>을 POST 요청을 위해 C<post>를 연결합니다.
+각 라우트 핸들러는 기본적으로 사용자 함수(C<<< sub >>>)입니다. GET 요청을 위해 C<<< get >>>을 POST 요청을 위해 C<<< post >>>를 연결합니다.
 
     #!perl
     get '/admin' => sub { }
@@ -149,7 +149,7 @@ YouPerl이라는 웹 어플리케이션을 위한 파일 뼈대들이 생성됩�
     $ dancer -a YouPerl
     $ cd YouPerl
 
-C<find>를 입력하여 전체 구조를 살펴봅시다. 아래는 파일을 어느정도 생략한 모습입니다.
+C<<< find >>>를 입력하여 전체 구조를 살펴봅시다. 아래는 파일을 어느정도 생략한 모습입니다.
 
     #!bash
     $ find
@@ -162,10 +162,10 @@ C<find>를 입력하여 전체 구조를 살펴봅시다. 아래는 파일을 �
     ./lib
     ./lib/YouPerl.pm
 
-C</views> 디렉터리에는 탬플릿이 위치합니다. C</bin>에는 실행도구들이 있습니다. C</t>디렉터리에는
-테스트 스크립트가 모여 있습니다. C</public> 디렉터리 이하의 파일들은 정적 파일로 외부에 노출됩니다.
-기본적인 설정은 C</config.yml>에 있지만 C</environments> 디렉터리 밑에 개발버전과 정식버전으로 나눈 설정을
-따로 보관합니다. C</lib> 이하에 웹 어플리케이션의 로직 코드가 위치합니다.
+C<<< /views >>> 디렉터리에는 탬플릿이 위치합니다. C<<< /bin >>>에는 실행도구들이 있습니다. C<<< /t >>>디렉터리에는
+테스트 스크립트가 모여 있습니다. C<<< /public >>> 디렉터리 이하의 파일들은 정적 파일로 외부에 노출됩니다.
+기본적인 설정은 C<<< /config.yml >>>에 있지만 C<<< /environments >>> 디렉터리 밑에 개발버전과 정식버전으로 나눈 설정을
+따로 보관합니다. C<<< /lib >>> 이하에 웹 어플리케이션의 로직 코드가 위치합니다.
 
 아래와 같이 입력하고 웹부라우저를 통해 I<http://localhost:3000/>으로 접근해봅시다.
 
@@ -199,7 +199,7 @@ Redis 플러그인은 설정 몇줄만 넣으면 아래와 같이 redis 키워�
     
     dance;
 
-설정은 C</config.yml>을 열고 마지막에 다음 네 줄을 입력하면 됩니다.
+설정은 C<<< /config.yml >>>을 열고 마지막에 다음 네 줄을 입력하면 됩니다.
 
     #!plain
     plugins:
@@ -220,7 +220,7 @@ L<Web::Scraper|http://metacpan.org/module/Web::Scraper>나 L<Web::Query|http://m
     my $grep_imglist = qr|http://p.playforum.net/[^"]+|si;
 
 긁은 이미지의 파일명을 서로 겹치지 않게 하기 위해 MD5 알고리즘을 이용하고, 이것을 데이터베이스에서 각 파일의
-식별자로 사용하겠습니다. L<GD::Thumbnail|http://metacpan.org/module/GD::Thumbnail>을 사용하면 쉽게 썸네일을 생성할 수도 있습니다. C<bin/grep_gstar.pl>으로 저장합니다..
+식별자로 사용하겠습니다. L<GD::Thumbnail|http://metacpan.org/module/GD::Thumbnail>을 사용하면 쉽게 썸네일을 생성할 수도 있습니다. C<<< bin/grep_gstar.pl >>>으로 저장합니다..
 
     #!perl
     #!/usr/bin/env perl
@@ -306,7 +306,7 @@ L<Web::Scraper|http://metacpan.org/module/Web::Scraper>나 L<Web::Query|http://m
 
 =for html <img src="2011-12-06-3.png" alt="잔뜩" />
 
-심심하지 않은 웹서비스를 만들기 위해 각 이미지를 색상별로 분류해 봅니다. 역시 데이터베이스에 기록합니다. C<bin/calc_gstar.pl>으로 저장합니다.
+심심하지 않은 웹서비스를 만들기 위해 각 이미지를 색상별로 분류해 봅니다. 역시 데이터베이스에 기록합니다. C<<< bin/calc_gstar.pl >>>으로 저장합니다.
 
     #!perl
     #!/usr/bin/env perl
@@ -429,7 +429,7 @@ L<Web::Scraper|http://metacpan.org/module/Web::Scraper>나 L<Web::Query|http://m
         return xyz_dist [rgb2xyz @$l], [rgb2xyz @$r];
     }
 
-색상을 대표하는 값은 GD의 C<copyResampled> 함수를 사용하면 됩니다. "Perl Hacks" 책의 44번 항목을 참고했습니다.
+색상을 대표하는 값은 GD의 C<<< copyResampled >>> 함수를 사용하면 됩니다. "Perl Hacks" 책의 44번 항목을 참고했습니다.
 색상별로 분류하는 방법은 다음의 문서를 참고했습니다.
 
 =over
@@ -449,8 +449,8 @@ L<Color Difference Algorithm|http://www.emanueleferonato.com/2009/08/28/color-di
 
 =head2 래퍼 만들기
 
-래퍼 파일(C</views/layouts/main.tt>)을 적절하게 수정합니다.
-컨테이너 부분이 C<[% content %]>로 되어 있습니다. 각 링크를 클릭하면
+래퍼 파일(C<<< /views/layouts/main.tt >>>)을 적절하게 수정합니다.
+컨테이너 부분이 C<<< [% content %] >>>로 되어 있습니다. 각 링크를 클릭하면
 선택한 분류에 따라 컨테이너 안에 이미지가 다르게 출력되도록 할 것입니다.
 색상 목록을 전역 변수로 빼놓는 것이 더 좋겠습니다.
 지금은 그대로 두겠습니다.
@@ -490,12 +490,12 @@ L<Color Difference Algorithm|http://www.emanueleferonato.com/2009/08/28/color-di
         template 'index';
     };
 
-C<index.tt>는 간단한 문구로 완성합니다.
+C<<< index.tt >>>는 간단한 문구로 완성합니다.
 
     #!plain
     I can code in Christmas! :)
 
-C</category/gstar>와 같이 카테고리를 부여하면 특정 카테고리에 해당하는
+C<<< /category/gstar >>>와 같이 카테고리를 부여하면 특정 카테고리에 해당하는
 이미지를 모두 반환하도록 합니다. 템플릿으로 반환합니다.
 
     #!perl
@@ -517,14 +517,14 @@ C</category/gstar>와 같이 카테고리를 부여하면 특정 카테고리에
 
 지금은 탬플릿 언어로 L<Template Toolkit|http://template-toolkit.org/>을 사용하고 있습니다. Dancer의 기본
 탬플릿 언어는 L<Dancer::Template::Simple|http://metacpan.org/module/Dancer::Template::Simple>입니다. 
-탬플릿 언어를 바꾸려면 C<config.yml>을 수정하면 됩니다.
+탬플릿 언어를 바꾸려면 C<<< config.yml >>>을 수정하면 됩니다.
 개인적으로 L<Xslate|http://xslate.org/>이 짱입니다. 
 
 여기까지 완성하면 아래와 같이 사진이 잔뜩 올라옵니다.
 
 =for html <img src="2011-12-06-4.png" alt="이렇게요" />
 
-C</category/gstar/color/red>와 같이 특정 색상을 필터하도록 요청해오면
+C<<< /category/gstar/color/red >>>와 같이 특정 색상을 필터하도록 요청해오면
 특정 색상에 대한 항목만 반환하도록 합니다. 간단하죠?
 
     #!perl

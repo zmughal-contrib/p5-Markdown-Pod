@@ -37,7 +37,7 @@ L<Tornado|http://www.tornadoweb.org/>를 펄 버전으로 새로 구현한 프�
 
 =head2 예제를 봅시다
 
-Tatsumaki 소스를 다운받으면 C<eg> 디렉터리 아래에 L<간단한 채팅 서버 예제|http://search.cpan.org/perldoc?Tatsumaki>가 있습니다.
+Tatsumaki 소스를 다운받으면 C<<< eg >>> 디렉터리 아래에 L<간단한 채팅 서버 예제|http://search.cpan.org/perldoc?Tatsumaki>가 있습니다.
 
     #!bash
     $ tree eg/chat
@@ -56,8 +56,8 @@ Tatsumaki 소스를 다운받으면 C<eg> 디렉터리 아래에 L<간단한 채
     `-- templates
         `-- chat.html
 
-PSGI 어플리케이션으로 되어 있으며 모든 펄 코드는 C<app.psgi>에 집적되어 있습니다.
-이 중, 먼저 C<main> 패키지의 코드를 봅시다.
+PSGI 어플리케이션으로 되어 있으며 모든 펄 코드는 C<<< app.psgi >>>에 집적되어 있습니다.
+이 중, 먼저 C<<< main >>> 패키지의 코드를 봅시다.
 
     #!perl
     package main;
@@ -77,11 +77,11 @@ PSGI 어플리케이션으로 되어 있으며 모든 펄 코드는 C<app.psgi>�
     return $app->psgi_app;
 
 Tatsumaki::Application를 생성하면서 처리할 URL 패턴과 각 패턴에 대한 핸들러를 추가해줍니다.
-그런 다음 템플릿 경로(C<template_path>) 설정도 해주고 정적 파일(C<static_file>)을 처리하기 위한 설정도 추가해줍니다.
+그런 다음 템플릿 경로(C<<< template_path >>>) 설정도 해주고 정적 파일(C<<< static_file >>>)을 처리하기 위한 설정도 추가해줍니다.
 여기까지는 간단하죠?
 
-처리할 URL 패턴 중, 먼저 C</chat/($chat_re)>에 접근한다고 가정해 봅시다.
-따라서 이번에는 C<ChatRoomHandler>를 보겠습니다.
+처리할 URL 패턴 중, 먼저 C<<< /chat/($chat_re) >>>에 접근한다고 가정해 봅시다.
+따라서 이번에는 C<<< ChatRoomHandler >>>를 보겠습니다.
 
     #!perl
     package ChatRoomHandler;
@@ -92,19 +92,19 @@ Tatsumaki::Application를 생성하면서 처리할 URL 패턴과 각 패턴에 
         $self->render('chat.html');
     }
 
-그냥 C<chat.html> 템플릿을 랜더링하고 있습니다.
-C<ChatRoomHandler> 핸들러에 제공된 URL 패턴은 정규표현식이었습니다.
+그냥 C<<< chat.html >>> 템플릿을 랜더링하고 있습니다.
+C<<< ChatRoomHandler >>> 핸들러에 제공된 URL 패턴은 정규표현식이었습니다.
 이 정규표현식에 매치가 성공하면 해당 핸들러에 디스패치되고
-매치를 통해 일치 변수(C<$1>, C<$2>, C<$3> 등)로 기억된 결과가
-핸들러의 변수로 넘어갑니다. 이 경우에는 C<$channel>에
-C<$chat_re>에 매치된 문자열이 넘어가겠네요.
+매치를 통해 일치 변수(C<<< $1 >>>, C<<< $2 >>>, C<<< $3 >>> 등)로 기억된 결과가
+핸들러의 변수로 넘어갑니다. 이 경우에는 C<<< $channel >>>에
+C<<< $chat_re >>>에 매치된 문자열이 넘어가겠네요.
 
 핸들러에 HTTP 메소드명의 사용자 함수를 작성하면,
 해당 메소드 요청에 대해 연결됩니다.
-이 경우에는 C<get> 함수를 정의하여 GET 메소드에 대해 템플릿을 랜더링하도록
+이 경우에는 C<<< get >>> 함수를 정의하여 GET 메소드에 대해 템플릿을 랜더링하도록
 하고 있습니다.
 
-이번엔 C<ChatPostHandler>입니다.
+이번엔 C<<< ChatPostHandler >>>입니다.
 
     #!perl
     package ChatPostHandler;
@@ -151,8 +151,8 @@ C<$chat_re>에 매치된 문자열이 넘어가겠네요.
     });
 
 채널명에 해당하는 메시지 큐에 채팅을 통해 전달받은 채팅 메시지를 전달하고 있습니다.
-메시지 C<"message">로 분류하고, 사용자명, 아바타, 시간, HTML로 랜더링된 메시지 등을 담았습니다.
-이번에는 C<ChatPollHander>를 봅시다.
+메시지 C<<< "message" >>>로 분류하고, 사용자명, 아바타, 시간, HTML로 랜더링된 메시지 등을 담았습니다.
+이번에는 C<<< ChatPollHander >>>를 봅시다.
 
     #!perl
     package ChatPollHandler;
@@ -176,12 +176,12 @@ C<$chat_re>에 매치된 문자열이 넘어가겠네요.
         $self->finish;
     }
 
-방금 본 C<post> 함수와 비슷합니다.
-먼저 해당 핸들러는 C<__PACKAGE__->asynchronous(1);>을 통해 비동기 모드로 설정했습니다.
-Tatsumaki::MessageQueue 인스턴스를 하나 만들고 C<$mq->poll_once>로 모든 메시지를 한꺼번에 대기합니다.
+방금 본 C<<< post >>> 함수와 비슷합니다.
+먼저 해당 핸들러는 C<<< __PACKAGE__->asynchronous(1); >>>을 통해 비동기 모드로 설정했습니다.
+Tatsumaki::MessageQueue 인스턴스를 하나 만들고 C<<< $mq->poll_once >>>로 모든 메시지를 한꺼번에 대기합니다.
 핸들러를 비동기 모드로 설정했기 때문에 핸들러 객체에 등록된 Writer 객체를 사용하는
-C<write>과 C<finish> 함수로 도착한 이벤트를 출력합니다. 해시 레퍼런스였던 메시지는 JSON으로 변환되어 전달됩니다.
-C<ChatMultipartPollHandler>는 어떨까요?
+C<<< write >>>과 C<<< finish >>> 함수로 도착한 이벤트를 출력합니다. 해시 레퍼런스였던 메시지는 JSON으로 변환되어 전달됩니다.
+C<<< ChatMultipartPollHandler >>>는 어떨까요?
 
     #!perl
     package ChatMultipartPollHandler;
@@ -205,8 +205,8 @@ C<ChatMultipartPollHandler>는 어떨까요?
     }
 
 이전과 거의 비슷합니다.
-대신 멀티파트 C<multipart_xhr_push>를 한 줄 넣어 멀티파트 헤더를 추가해주고
-연결을 끊지 않고 계속 poll 하기 위해 C<stream_write>로 이벤트를 전송합니다.
+대신 멀티파트 C<<< multipart_xhr_push >>>를 한 줄 넣어 멀티파트 헤더를 추가해주고
+연결을 끊지 않고 계속 poll 하기 위해 C<<< stream_write >>>로 이벤트를 전송합니다.
 
 마지막으로 L<plackup|http://search.cpan.org/perldoc?plackup>을 통해서 L<Twiggy|http://search.cpan.org/perldoc?Twiggy>로 띄우면... 채팅 잘 되네요~
 
@@ -217,7 +217,7 @@ C<ChatMultipartPollHandler>는 어떨까요?
 =head2 보너스!
 
 채팅만 하려니까 뭔가 심심해서 재미있는걸 해볼 수 있게 canvas를 추가해봅시다.
-C<chat.html>에 아래와 같이 캔버스 한 줄을 추가합니다.
+C<<< chat.html >>>에 아래와 같이 캔버스 한 줄을 추가합니다.
 
     #!xml
     <canvas id="c" width="200" height="100" style="border:1px solid"></canvas>

@@ -150,9 +150,9 @@ L<DateTime|https://metacpan.org/module/DateTime>을 쓰는 것이 더 좋다고 
     my $url      = "http://gms.hs.kr/submain.html?tmode=school_eat&eatmode=view&nm=&year=$year&month=$month&date=$day";
     my $response = $ua->get($url);
 
-위처럼 C<LWP::UserAgent> 모듈을 사용해 학교 웹사이트에서
-C<$year>년 C<$month>월 C<$day>일의 급식을 받아옵니다.
-여기서 오늘 날짜의 변수는 C<DateTime> 모듈을 사용해 쉽게 가져올 수 있습니다.
+위처럼 C<<< LWP::UserAgent >>> 모듈을 사용해 학교 웹사이트에서
+C<<< $year >>>년 C<<< $month >>>월 C<<< $day >>>일의 급식을 받아옵니다.
+여기서 오늘 날짜의 변수는 C<<< DateTime >>> 모듈을 사용해 쉽게 가져올 수 있습니다.
 
     #!perl
     my ( $lunch, $dinner );
@@ -167,19 +167,19 @@ C<$year>년 C<$month>월 C<$day>일의 급식을 받아옵니다.
         die "정보를 받아오는 중에 오류가 발생했습니다! : $err\n";
     }
 
-우리의 C<$ua>가 가져온 결과는 C<$response>에 담겼습니다.
-성공적으로 결과를 받으면 웹페이지의 내용을 전부 C<get_food> 함수에 전달합니다.
+우리의 C<<< $ua >>>가 가져온 결과는 C<<< $response >>>에 담겼습니다.
+성공적으로 결과를 받으면 웹페이지의 내용을 전부 C<<< get_food >>> 함수에 전달합니다.
 그리고 결과로 점심과 저녁의 메뉴를 받았습니다.
 만약 인터넷 연결이나 서버의 문제 등으로 데이터를 가져오지 못하면
 오류를 뿜고 종료합니다. 정말 간단하죠?
 여기까지가 기본 형태입니다.
 학교 홈페이지마다 웹사이트 코드의 구조는 다를테니
-C<get_food> 함수의 구현은 여러분의 학교에 맞게 작성해야 합니다.
+C<<< get_food >>> 함수의 구현은 여러분의 학교에 맞게 작성해야 합니다.
 그럼 두 학교 사이트를 통해 연습해볼까요?
 
 먼저 L<경기 모바일 과학 고등학교|http://gms.hs.kr/>입니다. 사실 방금 가져온 웹페이지의 URL의 정체도 이곳이었습니다.
-웹 페이지의 소스를 브라우저에서 직접 확인하려면 브라우저 주소 앞에 C<view-source:>를 붙여서 열어봅니다.
-이전의 코드에서 C<get_food> 함수에 전달될 내용의 일부는 아래와 같습니다.
+웹 페이지의 소스를 브라우저에서 직접 확인하려면 브라우저 주소 앞에 C<<< view-source: >>>를 붙여서 열어봅니다.
+이전의 코드에서 C<<< get_food >>> 함수에 전달될 내용의 일부는 아래와 같습니다.
 
     #!xml
     <tr class="eatlist_contents_out">
@@ -203,7 +203,7 @@ C<get_food> 함수의 구현은 여러분의 학교에 맞게 작성해야 합�
       <td></td>
     </tr>
 
-여기에서 C<중식>의 C<옥수수밥,브로콜리크림스프,탕수육/소스,감자고추장조림,배추김치>를 가져와야 합니다.
+여기에서 C<<< 중식 >>>의 C<<< 옥수수밥,브로콜리크림스프,탕수육/소스,감자고추장조림,배추김치 >>>를 가져와야 합니다.
 "석식"에는 아무것도 없는 모습이네요.
 이 내용만 추출하기 위해 L<Web::Scraper|https://metacpan.org/module/Web::Scraper>나 L<Web::Query|https://metacpan.org/module/Web::Query> 같은 좋은
 모듈을 사용할 수 있습니다. 하지만 정규표현식을 사용하는 것도 편리합니다.
@@ -225,20 +225,20 @@ C<get_food> 함수의 구현은 여러분의 학교에 맞게 작성해야 합�
 I<그림 2.> 정규표현식 풀이
 
 즉, 급식은 매일 바뀌지만 앞뒤에 붙어있는 태그는 변함이 없기 때문에,
-앞 뒤에는 C<<td  style='font-weight:bold'>>와 C<</td>>를 그대로 쓰고
-매일 바뀌는 부분은 C<.+?>로 걸러냈습니다.
+앞 뒤에는 C<<< <td  style='font-weight:bold'> >>>와 C<<< </td> >>>를 그대로 쓰고
+매일 바뀌는 부분은 C<<< .+? >>>로 걸러냈습니다.
 그리고 걸러진 내용을 가져오기 위해 괄호로 감쌌습니다.
-여기서 C<.+?>의 각각의 기호는 의미가 있습니다. 
-조합하면 아무 글자나(C<.>) 몇 개든 상관 없지만(C<+>) 개수는
-최대한 적게(C<?>) 매치할 수 있는 하나의 패턴을 만듭니다.
-C<m|...|ig>에서 C<g>에 해당하는 정규표현식 옵션은 이 정규표현식이
+여기서 C<<< .+? >>>의 각각의 기호는 의미가 있습니다. 
+조합하면 아무 글자나(C<<< . >>>) 몇 개든 상관 없지만(C<<< + >>>) 개수는
+최대한 적게(C<<< ? >>>) 매치할 수 있는 하나의 패턴을 만듭니다.
+C<<< m|...|ig >>>에서 C<<< g >>>에 해당하는 정규표현식 옵션은 이 정규표현식이
 문자열에 대해 매치하는 모든 곳을 찾도록 돕습니다.
-가져온 모든 결과는 C<@result> 배열에 넣었습니다.
+가져온 모든 결과는 C<<< @result >>> 배열에 넣었습니다.
 
 이번에는 L<이웃집 디미고|http://dimigo.hs.kr/> 사이트에서 시도해봅시다.
 이곳의 식단표 페이지는 날짜와 상관없이 항상 동일하네요!
 그래서 L<DateTime|https://metacpan.org/module/DateTime> 모듈을 사용할 필요는 없고
-단순히 C<$url> 변수의 값만 다룹니다.
+단순히 C<<< $url >>> 변수의 값만 다룹니다.
 
     #!perl
     my $url = "http://new.dimigo.hs.kr/dimigo/kimson/home/dimigo/bbs.php?id=food_list";
@@ -267,13 +267,13 @@ C<m|...|ig>에서 C<g>에 해당하는 정규표현식 옵션은 이 정규표�
     <tr><td colspan="4" bgcolor="eeeeee" height="1"></td></tr>
 
 네, 달력 형태로 각 항목에 그 날의 급식이 써져있는데,
-C<tr>, C<td> 태그로 씌워져 있습니다.
-(정확히는 C<<tr align="center">>과 C<<tr><td colspan="4" bgcolor="eeeeee" height="1"></td></tr>>)
-그리고 각 시간대 별 식단도 다시 C<tr>과 C<td> 태그로 감싸져 있네요.
+C<<< tr >>>, C<<< td >>> 태그로 씌워져 있습니다.
+(정확히는 C<<< <tr align="center"> >>>과 C<<< <tr><td colspan="4" bgcolor="eeeeee" height="1"></td></tr> >>>)
+그리고 각 시간대 별 식단도 다시 C<<< tr >>>과 C<<< td >>> 태그로 감싸져 있네요.
 게다가 그 중, 오늘의 급식만 스타일 속성이
-C<font-weight:bold;color:#666666;>으로 지정되어 있습니다.
+C<<< font-weight:bold;color:#666666; >>>으로 지정되어 있습니다.
 다행이네요. 그러면 간단히 작성할 수 있습니다.
-C<get_food> 함수를 이렇게 고치면 되죠!
+C<<< get_food >>> 함수를 이렇게 고치면 되죠!
 
     #!perl
     sub get_food {
@@ -416,17 +416,17 @@ I<그림 6.> 토큰이 기록된 앱 상세 페이지 (L<원본|2011-12-22-6.png
         warn "$@\n" if $@;
     }
 
-먼저 C<@ARGV>입니다. 이 배열은 명령 뒤에 주는 스위치나 옵션 목록을 담고 있습니다.
-즉, 도스의 C<dir /p>의 C</p>나 C<ls -l>의 C<-l>에 해당합니다.
-이 옵션 목록에서 첫번째의 항목을 C<$option>으로 받습니다.
+먼저 C<<< @ARGV >>>입니다. 이 배열은 명령 뒤에 주는 스위치나 옵션 목록을 담고 있습니다.
+즉, 도스의 C<<< dir /p >>>의 C<<< /p >>>나 C<<< ls -l >>>의 C<<< -l >>>에 해당합니다.
+이 옵션 목록에서 첫번째의 항목을 C<<< $option >>>으로 받습니다.
 
     #!perl
     my ($option) = @ARGV;
 
-여기서는 C<-l> 옵션을 받으면 점심을, C<-d>이면 저녁을, C<-a>이면 모두 트위터로 올리도록 했습니다.
+여기서는 C<<< -l >>> 옵션을 받으면 점심을, C<<< -d >>>이면 저녁을, C<<< -a >>>이면 모두 트위터로 올리도록 했습니다.
 옵션을 주지 않거나 잘못되면 경고 메시지를 트위터로 올립니다.
-이전의 스크립트는 C<bot>이라는 사용자 함수로 묶었습니다.
-C<get_food>으로 나눴던 로직은 C<bot>안에 다시 넣었습니다.
+이전의 스크립트는 C<<< bot >>>이라는 사용자 함수로 묶었습니다.
+C<<< get_food >>>으로 나눴던 로직은 C<<< bot >>>안에 다시 넣었습니다.
 
     #!perl
     sub bot {
@@ -445,8 +445,8 @@ C<get_food>으로 나눴던 로직은 C<bot>안에 다시 넣었습니다.
         }
     }
 
-그리고 함수의 인자로 받은 C<$option>의 값에 따라 점심, 저녁, 또는 전부를 트윗합니다.
-옵션에 따라 C<tweet> 함수를 호출하고 있습니다.
+그리고 함수의 인자로 받은 C<<< $option >>>의 값에 따라 점심, 저녁, 또는 전부를 트윗합니다.
+옵션에 따라 C<<< tweet >>> 함수를 호출하고 있습니다.
 함수 이름을 보면 알 수 있듯이 말 그대로 트윗을 올리는 함수입니다.
 
     #!perl
@@ -464,14 +464,14 @@ C<get_food>으로 나눴던 로직은 C<bot>안에 다시 넣었습니다.
     #!plain
     Net::OAuth warning: your OAuth message appears to contain some multi-byte characters that need to be decoded via Encode.pm or a PerlIO layer first.  This may result in an incorrect signature. at /home/cheesekun/perl5/perlbrew/perls/perl-5.14.1/lib/site_perl/5.14.1/Net/OAuth/Message.pm line 106.
 
-그래서 디코딩 후, C<update> 메소드로 전달합니다.
+그래서 디코딩 후, C<<< update >>> 메소드로 전달합니다.
 그 외 나머지는 앞에서 살펴본 코드와 거의 비슷합니다.
 
 
 =head2 정리하며
 
 트윗으로 올리는 기능을 만들었지만, 특정 시간에 자동으로 올려주지는 않습니다.
-윈도에서는 I<작업 스케쥴러>를 리눅스에서는 C<crontab>을 사용해
+윈도에서는 I<작업 스케쥴러>를 리눅스에서는 C<<< crontab >>>을 사용해
 특정 시간에 자동으로 스크립트를 실행시키면 됩니다!
 처음 쓰는 기사라 내용이 알찰지 모르겠네요.
 그래도 많은 학생분들에게 맛있는 급식 생활이 되었으면 합니다.
